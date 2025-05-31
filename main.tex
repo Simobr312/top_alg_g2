@@ -1,0 +1,406 @@
+\documentclass[]{article}
+
+% Packages
+\usepackage[utf8]{inputenc} % For UTF-8 encoding
+\usepackage[T1]{fontenc}    % For proper Italian accents
+\usepackage[italian]{babel} % Italian language support
+\usepackage{amsmath, amsfonts, amssymb} % Math packages
+\usepackage{graphicx}       % For including images
+\usepackage{hyperref}       % For hyperlinks
+\usepackage{bookmark}       % For improved PDF bookmarks and rerunfilecheck warning
+\usepackage{tikz}           % For diagrams
+\usepackage{geometry}       % For page layout
+\usepackage{fancyhdr}       % For custom headers/footers
+\usepackage{enumitem}       % For custom lists
+\usepackage{xcolor}         % For colored text
+\usepackage{mathtools}      % For additional math tools
+\usepackage{amsthm}         % For theorem environments
+\usepackage{quiver}         % For commutative diagrams
+
+% Load custom commands
+\usepackage{commands} 
+% Theorem styles
+
+% Page layout
+\geometry{a4paper, margin=1in}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{Note della parte di Topologia Algebrica del corso di Geometria 2 del 2024/25}
+\fancyhead[R]{\thepage}
+
+\begin{document}
+
+\title{Appunti di Topologia Algebrica}
+\author{Simone Riccio}
+\date{\today}
+
+\maketitle
+
+\tableofcontents
+
+\section{Gruppo Fondamentale}
+\subsection{Motivazione}
+    Una delle motivazioni che porta a definire il gruppo fondamentale è la necessità di distinguere
+    due spazi topologici a meno di omeomorfismo.
+
+    \begin{example} \nl
+        Si consideri il disco 
+        \[  
+            D^n := \set{ x \in \R^{n} \mid \norm{x} \leq 1 }
+        \]
+        Al variare di $n$ naturale i $D^n$ non sono intuitivamente omeomorfi, tuttavia dimostrarlo
+        usando solo la topologia generale è difficile.
+
+        È semplice mostrare che $D^1 \not\cong D^n$ per $n \geq 2$, usando l'insieme delle componenti 
+        connesse. Infatti, per ogni $x \in D^n$ lo spazio topologico $D^n \setminus \set{x}$ è connesso 
+        per ogni $n \geq 2$, mentre $D^1 \setminus \set{x}$, essendo il segmento $[-1,1]$ senza un punto, ha due componenti connesse.
+    
+        Tale argomentazione non funziona già per provare a distinguere $D^2$ dai $D^n$ con $n \geq 3$.
+        Introduciamo quindi il gruppo fondamentale, che permetterà in futuro di distinguerli tutti.
+    \end{example}
+
+    \begin{definition}[Omotopia] \nl
+        Date due funzioni continue $f,g: X \to Y$ tra spazi topologici, si dice che $f$ e $g$ sono \textbf{omotope} se esiste una funzione
+        \[
+            H: I \times X \to Y
+        \]
+        \textbf{continua} e tale che:
+        \begin{itemize}
+            \item $H(0,x) = f(x)$ per ogni $x \in X$;
+            \item $H(1,x) = g(x)$ per ogni $x \in X$.
+            \item $H(s,y) = H(s,x)$ per ogni $s \in I$ e per ogni $x,y \in X$ tali che $f(x) = f(y)$.
+        \end{itemize}
+        Si dice che $H$ è un'\textbf{omotopia} tra $f$ e $g$ e si scrive
+        \[
+            f \sim g.
+        \]
+        Inoltre si pu\`o vedere un'omotopia come una famiglia di funzioni contiune:
+        \[
+            \set{f_s: X \to Y}_{s \in I}
+            \quad \text{con } f_s(x) = H(s,x).
+        \]
+        Che rappresentano una deformazione continua di $f$ in $g$.
+    \end{definition}
+
+    \begin{definition}[Omotopia di cammini a estremi fissi] \nl
+        Due cammini $\gamma_0, \gamma_1: I \to X$ si dicono \textbf{omotopi (a estremi fissi)} se esiste una funzione
+        \[
+            H: I \times I \to X
+        \]
+        \textbf{continua} e tale che:
+        \begin{itemize}
+            \item $H(0,t) = \gamma_0(t)$ per ogni $t \in I$;
+            \item $H(1,t) = \gamma_1(t)$ per ogni $t \in I$;
+            \item $H(s,0) = H(s,1)$ per ogni $s \in I$.
+        \end{itemize}
+        Si dice che $H$ è un'\textbf{omotopia di cammini a estremi fissi} e si scrive
+        \[
+            \gamma_0 \sim \gamma_1.
+        \] 
+        Infatti è facile verificare che l'essere omotopi a estremi fissi induce una relazione di equivalenza
+        sull'insieme dei cammini in $X$.
+    \end{definition}
+
+    \begin{definition} [Giunzione di cammini] \nl
+        Siano $f,g: I \to X$ due cammini in $X$ con $f(1) = g(0)$, allora la \textbf{giunzione} di $f$ e $g$ è il cammino
+        \[
+            f * g: I \to X: t \mapsto 
+            \begin{cases}
+                f(2t) & \text{se } 0 \leq t \leq \frac{1}{2}, \\
+                g(2t-1) & \text{se } \frac{1}{2} < t \leq 1.
+            \end{cases}
+        \]
+    \end{definition}
+
+    \begin{lemma} [Giunzione di cammini e omotopia] \nl
+        Se $f \sim f'$ e $g \sim g'$, allora $f * g \sim f' * g'$.
+    \end{lemma}
+
+    \begin{proof}
+            Sia $H_f: I \times I \to X$ un'omotopia di $f$ e $f'$ e $H_g: I \times I \to X$ un'omotopia di $g$ e $g'$.
+
+            Definiamo l'omotopia
+            \[
+                H: I \times I \to X: (s,t) \mapsto 
+                \begin{cases}
+                    H_f(2s,t) & \text{se } 0 \leq s \leq \frac{1}{2}, \\
+                    H_g(2s-1,t) & \text{se } \frac{1}{2} < s \leq 1.
+                \end{cases}
+            \]
+            che risulta continua. Infatti la continuità di $H_f$ e $H_g$ implica la continuità di $H$, essendo le due funzioni
+            definite su due intervalli disgiunti. Inoltre si verifica facilmente che $H$ soddisfa le condizioni richieste.
+    \end{proof}
+
+    \begin{remark} \nl
+        Si noti che la giunzione di cammini non è definita su ogni coppia di cammini, ma solo su quelle che hanno
+        il punto finale del primo uguale al punto iniziale del secondo. Tuttavia, se si considerano solo i cammini chiusi \textbf{che partono da uno stesso punto iniziale},
+        la giunzione è chiaramente sempre definita.
+    \end{remark}
+
+    Da ora in poi gli spazi topologici considerati saranno sempre localmente connessi.
+
+    \begin{theorem} [Poincar\'e] \nl
+        Se $X$ uno spazio topologico e $x_0 \in X$ un punto fisso. \nl
+        Il prodotto dato dalla giunzione di cammini induce una struttura di gruppo sulle classi di omotopia
+        dei cammini chiusi in $X$ aventi punto iniziale $x_0$. \nl
+        Tale gruppo è chiamato \textbf{gruppo fondamentale} di $X$ in $x_0$ e si denota con $\pi_1(X,x_0)$. \nl
+        In tale gruppo l'elemento neutro è rappresentato dal cammino costante in $x_0$ e l'inverso di un cammino $\gamma$ è il cammino
+        \[
+            \gamma^{-1}(t) = \gamma(1-t)
+        \]
+        che è l'inverso rispetto alla giunzione di cammini.
+    \end{theorem}
+
+    Per la dimostrazione del teorema di Poincar\'e ci basta dimostrare prima un lemma.
+
+    \begin{lemma} (Riparametrizzazione di un cammino e omotopia) \nl
+        Sia $\gamma: I \to X$ un cammino in $X$ e sia $\varphi: I \to I$ una funzione continua tale che $\phi(0) = 0$ e $\phi(1) = 1$.
+        Allora $\gamma \circ \varphi: I \to X$ è un cammino in $X$ e $\gamma \sim \gamma \circ \varphi$.
+    \end{lemma}
+
+    \begin{proof}
+        Basta mostrare che la funzione $\varphi$ \`e omotopa all'identita\`a $id_I$. \nl
+        L'omotopia \`e data dalla famiglia di funzioni
+        \[
+            \varphi_s: I \to I: t \mapsto (1-s) t + s \varphi(t).
+        \]
+        E poi boh.. buco.
+    \end{proof}
+
+    \begin{proof} [Teorema di Poincar\`e] \nl
+        \begin{itemize}
+            \item (Associatività) \nl
+            Siano $\gamma_1, \gamma_2, \gamma_3: I \to X$ tre cammini chiusi in $X$ con punto iniziale $x_0$.
+            Si ha che
+            \[
+                (\gamma_1 * \gamma_2) * \gamma_3 \sim \gamma_1 * (\gamma_2 * \gamma_3).
+            \]
+            Poich\'e $\gamma_1 * (\gamma_2 * \gamma_3)$ si pu\`o vedere come una Riparametrizzazione
+            del cammino $(\gamma_1 * \gamma_2) * \gamma_3$ e quinid usare il lemma.
+            \item (Unità) \nl
+            L'elemento neutro del gruppo fondamentale è il cammino costante in $x_0$, che si denota con $e: I \to {x_0}$. \nl
+            Infatti, per ogni cammino $\gamma: I \to X$ si ha che
+            $\gamma * e $ \`e la Riparametrizzazione di $\gamma$ secondo la mappa
+            \[
+                \varphi: I \to I: t \mapsto \begin{cases}
+                    2t & \text{se } 0 \leq t \leq \frac{1}{2}, \\
+                    1 & \text{se } \frac{1}{2} < t \leq 1
+                \end{cases}.
+            \]
+            \item (Inverso) \nl
+            Sia 
+            \[
+                \gamma_s: I \to X: t \mapsto
+                \begin{cases}
+                    \gamma(t) & \text{se } 0 \leq t \leq s, \\
+                    \gamma(s) & \text{se } s < t \leq 1.
+                \end{cases}
+            \]
+            La famiglia di cammini $\set{\gamma_s}_{s \in I}$, che non sono lacci, rappresenta un'omotopia tra il cammino costante in $x_0$ e il cammino 
+            $\gamma$, tuttavia \textbf{non rappresenta un'omotopia ad estremi fissi} poiché $\gamma_s(1) \neq \gamma(1)$.
+            Vale pero\` che $\gamma_s(0) = \gamma(0)$ cio\`e il punto iniziale \`e fisso. \nl
+            In modo analogo la famiglia di cammini data da 
+            \[
+                \gamma_s^{-1}(t) := gamma_s(1-t) 
+            \]
+            rappresenta un'omotopia tra il cammino costante in $x_0$ e il cammino $\gamma^{-1}$, ma non ad estremi fissi. \nl
+            A questo punto si verifica che la famiglia di \textbf{cammini chiusi} $\set{\gamma_s * \gamma_s^{-1}}_{s \in I}$ rappresenta un'omotopia \textbf{ad estremi fissi} 
+            tra il cammino costante in $x_0$ e il cammino $\gamma * \gamma^{-1}$. \nl
+            Si fa in maniera analoga per mostrare che $\gamma^{-1} * \gamma \sim e_{x_0}$
+        \end{itemize}
+    \end{proof}
+
+    \begin{example} \nl
+        \[
+            \pi_1(\R^n, x_0) = \{ e_{x_0} \} \quad \forall x_0 \in \R^n.
+        \]
+
+        Siano $\alpha, \beta: I \to \R^n$ due cammini chiusi in $\R^n$ con punto iniziale $x_0$. \nl
+        La famiglia di cammini chiusi definita da
+        \[
+            f_s: I \to \R^n: t \mapsto (1-s) \alpha(t) + s \beta(t)
+        \]
+        definisce un'omotopia ad estremi fissi tra $\alpha$ e $\beta$. \nl
+        Piu\` in generale, l'omotopia definita e\` quella che per ogni punto dei cammini percorre al variare di $s$
+        il segmento che unisce i due cammmini in quell'istante $t$, e dunque la stessa argomentazione vale per dimostrare che:
+       \[
+        \begin{aligned}
+            &\forall X \subset \R^n \text{ convesso}, \\
+            &\pi_1(X, x_0) = \{ e_{x_0} \} \quad \forall x_0 \in \R^n.
+        \end{aligned}
+        \]
+    \end{example}
+
+    \begin{proposition} [Gruppo fondamentale di un connesso per archi] \nl
+        Sia $X$ uno spazio topologico connesso per archi, allora
+        \[
+            \pi_1(X, x_0) \cong \pi_1(X, x_1) \quad \forall x_0, x_1 \in X.
+        \]
+        In altre parole, il gruppo fondamentale di uno spazio topologico connesso per archi non dipende dal punto iniziale scelto.
+    \end{proposition}
+
+    \begin{proof}
+    Sia $f: I \to X$ un cammino tale che $f(0) = x_0$ e $f(1) = x_1$, che esiste poiché $X$ è connesso per archi.
+    Tale cammino induce un isomorfismo tra i gruppi fondamentali in $x_0$ e $x_1$:
+    \[
+        \begin{aligned}
+            \pi_1(X, x_0) &\xrightarrow{\sim} \pi_1(X, x_1) \\
+            [\gamma] &\mapsto [f * \gamma * f^{-1}]
+        \end{aligned}
+    \]
+    con inversa data da
+    \[
+        \begin{aligned}
+            \pi_1(X, x_1) &\xrightarrow{\sim} \pi_1(X, x_0) \\
+            [\gamma] &\mapsto [f^{-1} * \gamma * f].
+        \end{aligned}
+    \]
+    Infatti, si verifica prima di tutto la buona definizione: \nl
+    Se $\gamma_1 \sim \gamma_2$ sono due cammini chiusi in $X$, per il lemma della Riparametrizzazione, si ha che
+    \[
+        f * \gamma_1 * f^{-1} \sim f * \gamma_2 * f^{-1}.
+    \]
+    Inoltre, si verifica che l'immagine di un cammino chiuso in $x_0$ è un cammino chiuso in $x_1$ e viceversa. \nl
+    Si si veririfica che le funzioni appena definite sono effettivamente degli omomorfismi di gruppo
+    poiche\` si ha che: 
+    \[
+        f * \gamma_1 * \gamma_2 * f^{-1} \sim (f * \gamma_1 * f^{-1}) * (f * \gamma_2 * f^{-1})
+    \]
+    usando l'associatività che anche se non dimostrata vale anche per cammini chiusi. \nl
+    Infine, si verifica facilmente che le due mappe sono una l'inversa dell'altra.
+\end{proof}
+
+\begin{remark} \nl
+    L'isomorfismo tra i due gruppi fondamentali non è canonico, poiché dipende dalla scelta del cammino $f$ tra i due punti $x_0$ e $x_1$.
+\end{remark}
+
+\begin{definition} [Spazio semplicemente connesso] \nl
+    Uno spazio topologico $X$ si dice \textbf{semplicemente connesso} se è connesso per archi e il suo gruppo fondamentale è banale, cioè
+    \[
+        \pi_1(X, x_0) = \{ e_{x_0} \} \quad \forall x_0 \in X.
+    \]
+\end{definition}
+
+\begin{remark} \nl
+    Se $X$ è semplicemente connesso e $\alpha, \beta: I \to X$ sono due cammini allora
+    \[ \alpha(0) = \beta(0), \quad \alpha(1) = \beta(1) \implies \alpha \sim \beta\]
+    Dato che il cammino $\alpha * \beta^{-1}$ è chiuso e il gruppo fondamentale è banale, quindi
+    \[
+        \alpha * \beta^{-1} \sim e_{x_0} \implies \alpha \sim \beta.
+    \]
+\end{remark}
+
+\begin{remark} [La funtorialit\`a del gruppo fondamentale] \nl
+    Siano $X, Y$ due spazi topologici e $\varphi: X \to Y$ una mappa continua tale che $\varphi(x_0) = y_0$ per due punti fissi $x_0 \in X$ e $y_0 \in Y$. \nl
+    Allora $\varphi$ induce un omomorfismo di gruppi
+    \[
+        \varphi_*: \pi_1(X, x_0) \to \pi_1(Y, y_0)
+    \]
+    definito da
+    \[
+        \varphi_*([\gamma]) = [\varphi \circ \gamma]
+    \]
+    Si verifica facilmente che la mappa \`e ben definita ed \`e un omomorifsmo di gruppi. \nl
+    Inoltre, vale che,
+    se $\varphi = \id_X$ allora $\varphi_* = id_{\pi_1(X, x_0)}$ e se $(\psi \circ \varphi)_* = \psi_* \circ \varphi_*$. \nl
+    Nel linguaggio delle categorie quindi si dice che 
+    \[  
+        \pi_1: \mathbf{Top} \to \mathbf{Grp}: X \mapsto \pi_1(X, x_0)
+    \]
+    è un \textbf{funtore} da $\mathbf{Top}$, la categoria degli spazi topologici, a $\mathbf{Grp}$, la categoria dei gruppi.
+\end{remark}
+
+\begin{proposition} \nl
+    Se $\varphi: X \to Y$ è un omeomorfismo tra spazi topologici, allora
+    \[
+        \varphi_*: \pi_1(X, x_0) \to \pi_1(Y, y_0)
+    \]
+    è un isomorfismo di gruppi, dove $x_0 \in X$ e $y_0 = \varphi(x_0) \in Y$.
+\end{proposition}
+
+\begin{proof} \nl
+    Poich\'e $\varphi$ è un omeomorfismo, essa è continua e ha un'inversa continua $\varphi^{-1}: Y \to X$. \nl
+    Cio\`e  $\varphi^{-1} \circ \varphi = \id_X$ e $\varphi \circ \varphi^{-1} = \id_Y$, quindi segue dalla funtorialit\'a
+    che
+    \[
+        \varphi_* \circ \varphi^{-1}_* = id_{\pi_1(X, x_0)} \quad \text{e} \quad \varphi^{-1}_* \circ \varphi_* = id_{\pi_1(Y, y_0)}.
+    \]
+    Quindi $\varphi_*$ è un isomorfismo di gruppi, poiché ha un'inversa data da $\varphi^{-1}_*$.
+\end{proof}
+
+\begin{definition} [Spazi omotopicamente equivalenti] \nl
+    Due spazi topologici $X$ e $Y$ si dicono \textbf{omotopicamente equivalenti} se esistono due funzioni continue
+    \[
+        f: X \to Y \quad \text{e} \quad g: Y \to X
+    \]
+    tali che:
+    \begin{itemize}
+        \item $g \circ f$ è omotopa all'identità su $X$;
+        \item $f \circ g$ è omotopa all'identità su $Y$.
+    \end{itemize}
+    Si denota con $X \simeq Y$ se $X$ e $Y$ sono omotopicamente equivalenti.
+\end{definition}
+
+\begin{example} \nl
+    \begin{enumerate} 
+        \item $\R^n$ \`e omotopicamente equivalente ad un punto, cio\`e si dice che $\R^n$ \`e \textbf{contraibile}.
+            Infatti sia $\varphi: \R^n \to \set{0} \subset \R^n$ la funzione costante in $0$, che è continua.
+            e sia $\psi: \set{0} \to \R^n$ anch'essa continua. \nl
+            Si ha che $\varphi \circ \psi = \id_{\set{0}}$, mentre $\psi \circ \varphi$ è omotopa all'identità su $\R^n$ tramite l'omotopia
+            definita da
+            \[
+                H: I \times \R^n \to \R^n: (s,x) \mapsto s x.
+            \]
+        \item $S^n$ \`e omotopicamente equivalente a $\R^{n+1} \setminus{\set{0}}$ \nl
+        Infatti se $i: S^n \hookrightarrow \R^n$ \`e l'inclusione di $S^n$ in $\R^{n+1} \setminus{\set{0}}$ e
+        \[  
+            \psi: \R^{n+1} \setminus{\set{0}} \to S^n: x \mapsto \frac{x}{\norm{x}}.
+        \]
+        Si ha che $i \circ \psi = \id_{S^n}$ e $\psi \circ i \sim \id_{\R^{n+1} \setminus{\set{0}}}$ tramite l'omotopia
+        \[
+            H: I \times \R^{n+1} \setminus{\set{0}} \to \R^{n+1} \setminus{\set{0}}: (s,x) \mapsto (1-s)x + s\frac{x}{\norm{x}}.
+        \]
+        \item Il Nastro di Möbius \`e omotopicamente equivalente al cerchio $S^1$. \nl
+            Infatti, sia $M$ il Nastro di Möbius e sia $\varphi: M \to S^1$ la proiezione che manda ogni punto del nastro sul suo bordo.
+            Si ha che $\varphi$ è continua e suriettiva. \nl
+            Infatti se consideriamo il quadrato $Q = [-1,1] \times [-1,1]$, tale spazio \`e omotopicamente equivalente al segmento
+            $[-1,1]$ tramite l'inlcusione del segmento nel quadrato e la proiezione naturale del quadrato sul segmento.
+            Identificando i lati opposti del quadrato in modo da ottenere il Nastro di Möbius, si ha che
+            la proiezione del quadrato sul segmento induce una mappa continua e suriettiva dal Nastro di Möbius al cerchio, con omotopie 
+            che passano al quoziente.
+        \end{enumerate}
+\end{example}
+
+\begin{theorem} (Spazi omotopicaamente equivalenti hanno gruppo fondamentale isomorfo) \nl
+    Siano $X$ e $Y$ spazi topologici \textbf{connessi per archi} omotopicamente equivalenti, allora i loro gruppi fondamentali sono isomorfi:
+    \[
+        \pi_1(X, x_0) \cong \pi_1(Y, y_0)
+    \]
+    per ogni coppia di punti fissi $x_0 \in X$ e $y_0 \in Y$.
+\end{theorem}
+
+\begin{lemma} \nl
+    Siano $\varphi_0, \varphi_1: X \to Y$ due funzioni continue tra spazi topologici e siano $x_0 \in X$. \nl
+    Il seguente diagramma commuta:
+    % https://q.uiver.app/#q=WzAsMyxbMCwxLCJcXHBpXzEoWF8seF8wKSJdLFsxLDAsIlxccGlfMShZLFxcdmFycGhpXzAoeF8wKSkiXSxbMSwyLCJcXHBpXzEoWSxcXHZhcnBoaV8xKHhfMCkpIl0sWzAsMSwiXFx2YXJwaGlfezAqfSJdLFswLDIsIlxcdmFycGhpX3sxKn0iLDJdLFsxLDIsIlxcdGF1X2YiXV0=
+    \[
+        \begin{tikzcd}
+        & {\pi_1(Y,\varphi_0(x_0))} \\
+        {\pi_1(X_,x_0)} \\
+        & {\pi_1(Y,\varphi_1(x_0))}
+        \arrow["{\tau_f}", from=1-2, to=3-2]
+        \arrow["{\varphi_{0*}}", from=2-1, to=1-2]
+        \arrow["{\varphi_{1*}}"', from=2-1, to=3-2]
+        \end{tikzcd}
+    \]
+    dove $\tau_f: \pi_1(Y, \varphi_0(x_0)) \to \pi_1(Y, \varphi_1(x_0))$ è l'isomorfismo indotto dal cammino
+    $f: I \to Y: s \mapsto \varphi_s(x_0)$ e $\set{\varphi_s | s \in I}$ \`e l'omotopia tra $\varphi_0$ e $\varphi_1$.
+\end{lemma}
+
+\begin{proof} \nl
+   
+\end{proof}
+
+\section{Rivestimenti}
+
+\end{document}
