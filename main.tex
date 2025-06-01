@@ -51,11 +51,11 @@
         Al variare di $n$ naturale i $D^n$ non sono intuitivamente omeomorfi, tuttavia dimostrarlo
         usando solo la topologia generale è difficile.
 
-        È semplice mostrare che $D^1 \not\cong D^n$ per $n \geq 2$, usando l'insieme delle componenti 
+        È semplice mostrare che $\Disc{1} \not\cong D^n$ per $n \geq 2$, usando l'insieme delle componenti 
         connesse. Infatti, per ogni $x \in D^n$ lo spazio topologico $D^n \setminus \set{x}$ è connesso 
-        per ogni $n \geq 2$, mentre $D^1 \setminus \set{x}$, essendo il segmento $[-1,1]$ senza un punto, ha due componenti connesse.
+        per ogni $n \geq 2$, mentre $\Disc{1} \setminus \set{x}$, essendo il segmento $[-1,1]$ senza un punto, ha due componenti connesse.
     
-        Tale argomentazione non funziona già per provare a distinguere $D^2$ dai $D^n$ con $n \geq 3$.
+        Tale argomentazione non funziona già per provare a distinguere $\Disc{2}$ dai $D^n$ con $n \geq 3$.
         Introduciamo quindi il gruppo fondamentale, che permetterà in futuro di distinguerli tutti.
     \end{example}
 
@@ -352,7 +352,7 @@
                 H: I \times \R^n \to \R^n: (s,x) \mapsto s x.
             \]
         \item $S^n$ \`e omotopicamente equivalente a $\R^{n+1} \setminus{\set{0}}$ \nl
-        Infatti se $i: S^n \hookrightarrow \R^n$ \`e l'inclusione di $S^n$ in $\R^{n+1} \setminus{\set{0}}$ e
+        Infatti se $i: S^n \into \R^n$ \`e l'inclusione di $S^n$ in $\R^{n+1} \setminus{\set{0}}$ e
         \[  
             \psi: \R^{n+1} \setminus{\set{0}} \to S^n: x \mapsto \frac{x}{\norm{x}}.
         \]
@@ -360,8 +360,8 @@
         \[
             H: I \times \R^{n+1} \setminus{\set{0}} \to \R^{n+1} \setminus{\set{0}}: (s,x) \mapsto (1-s)x + s\frac{x}{\norm{x}}.
         \]
-        \item Il Nastro di Möbius \`e omotopicamente equivalente al cerchio $S^1$. \nl
-            Infatti, sia $M$ il Nastro di Möbius e sia $\varphi: M \to S^1$ la proiezione che manda ogni punto del nastro sul suo bordo.
+        \item Il Nastro di Möbius \`e omotopicamente equivalente al cerchio $\Sph{1}$. \nl
+            Infatti, sia $M$ il Nastro di Möbius e sia $\varphi: M \to \Sph{1}$ la proiezione che manda ogni punto del nastro sul suo bordo.
             Si ha che $\varphi$ è continua e suriettiva. \nl
             Infatti se consideriamo il quadrato $Q = [-1,1] \times [-1,1]$, tale spazio \`e omotopicamente equivalente al segmento
             $[-1,1]$ tramite l'inlcusione del segmento nel quadrato e la proiezione naturale del quadrato sul segmento.
@@ -433,32 +433,32 @@
         \arrow["{\tau_f}" right, "{\cong}" left, from=1-3, to=2-3]
     \end{tikzcd}
     \]
-    Cio\`e vale che $ \varphi_* \circ (\tau_f \circ \psi) = \id = (\varphi_* \circ \tau_f) \circ \psi$, quindi \`e un fatto generale che
-    segue che $\varphi_*$ \`e surgetiva e $\psi_*$ \`e surgettiva. \nl
-    Inoltre facendo lo stesso ragionamento con $\varphi \circ \psi \sim \id_Y$ si ha che 
-    $\varphi_*$ \`e surgettiva e $\psi_*$ \`e iniettiva, quindi sono isomorfismi tra i rispettivi
-    gruppi fondamentali.   
+    Cio\`e vale che $ \tau_f \circ \psi_* \circ \varphi_* = \id$, quindi $\psi_* \circ \varphi_* = \tau_f^{-1}$, ma se la composizione di due mappe
+    \`e bigettiva allora la prima $\varphi_*$ \`e iniettiva e la seconda $\psi_*$ \`e suriettiva, ragionando in maniera analoga
+    per il verso opposto si ha che $\varphi_* \circ \psi_* = \tau_f$ e quindi $\psi_*$ \`e iniettiva e $\varphi_*$ \`e surgettiva. \nl
+    Si conclude quindi che $\varphi_*$ e $\psi_*$ sono isomorfismi di gruppi.
+         
 \end{proof}
 
 Da questo momento in poi, se $X$ \`e uno spazio topologico connesso per archi, si denota con $\pi_1(X)$ il gruppo fondamentale di uno spazio topologico $X$ in un punto fissato.
 
 \begin{theorem} [Gruppo fondamentale del cerchio] \nl
     \[
-        \pi_1\left(S^1 \right) \cong \Z.
+        \pi_1\left(\Sph{1} \right) \cong \Z.
     \]
-    Ed il cammino chiuso $t \mapsto e^{2\pi i t}$ rappresenta il generatore del gruppo fondamentale $\pi_1\left(S^1, 1\right)$.
+    Ed il cammino chiuso $t \mapsto e^{2\pi i t}$ rappresenta il generatore del gruppo fondamentale $\pi_1\left(\Sph{1}, 1\right)$.
 \end{theorem}
 
 \begin{definition} [Mappa esponenziale] \nl
     Si definisce la mappa
     \[
-        \rho: \R \to S^1: t \mapsto e^{2\pi i t}
+        \rho: \R \to \Sph{1}: t \mapsto e^{2\pi i t}
     \]
 \end{definition}
 
-\begin{lemma} [Sollevamento di un cammino di $S^1$ in $\R$] \nl
+\begin{lemma} [Sollevamento di un cammino di $\Sph{1}$ in $\R$] \nl
     \begin{enumerate}
-        \item Per ogni cammino chiuso $f: I \to S^1$ con $f(0) = f(1)$, 
+        \item Per ogni cammino chiuso $f: I \to \Sph{1}$ con $f(0) = f(1)$, 
         \textbf{esiste ed unico} un cammino(in generale non chiuso) $\tilde{f}: I \to \R$ detto \textbf{sollevamento di $f$ in $\R$} tale che
         \[
             \tilde{f}(0) = 0 \quad \text{e} \quad \rho \circ \tilde{f} = f.
@@ -466,7 +466,7 @@ Da questo momento in poi, se $X$ \`e uno spazio topologico connesso per archi, s
         Ovvero il seguente diagramma commuta:
         \[\begin{tikzcd}
             I & \R \\
-            & {S^1}
+            & {\Sph{1}}
             \arrow["{\tilde{f}}", from=1-1, to=1-2]
             \arrow["f"', from=1-1, to=2-2]
             \arrow["\rho", from=1-2, to=2-2]
@@ -481,36 +481,211 @@ Da questo momento in poi, se $X$ \`e uno spazio topologico connesso per archi, s
 \begin{proof} (Lemma $\implies$ Teorema) \nl
     Dal lemma segue che la mappa:
     \[
-        \Phi: \pi_1\left(S^1, 1\right) \to \Z: [f] \mapsto \tilde{f}(1)
+        \Phi: \pi_1\left(\Sph{1}, 1\right) \to \Z: [f] \mapsto \tilde{f}(1)
     \]Il terminale mi dice di aver committato, ma su github la repository non sembra essere commi
     \`e ben definita, ed inoltre induce un omomorfismo di gruppi, poich\'e
     \[
         \Phi\left([\gamma_1 * \gamma_2]\right) = \tilde{\gamma}_1(1) + \tilde{\gamma}_2(1) = \Phi\left([\gamma_1]\right) + \Phi\left([\gamma_2]\right).
     \].
-    Si dimostra ora la surgettivit\`a di $\Phi$, infatti dato il cammino chiuso $f_1: I \to S^1: t \mapsto e^{2\pi i t}$, si ha che
+    Si dimostra ora la surgettivit\`a di $\Phi$, infatti dato il cammino chiuso $f_1: I \to \Sph{1}: t \mapsto e^{2\pi i t}$, si ha che
     \[
         \Phi\left([f_1^n]\right) = n \tilde{f}_1(1) = n.
     \]
     Infine, si verifica che il nucleo di $\Phi$ \`e l'insieme dei cammini chiusi omotopi al cammino costante in $1$, dato che
-    se $f: I \to S^1$ \`e un cammino chiuso tale che $\tilde{f}(1) = 0$, si ha che $\tilde{f}$ \`e un cammino chiuso in $\R$ che parte da $0$ e torna a $0$, quindi
+    se $f: I \to \Sph{1}$ \`e un cammino chiuso tale che $\tilde{f}(1) = 0$, si ha che $\tilde{f}$ \`e un cammino chiuso in $\R$ che parte da $0$ e torna a $0$, quindi
     poich\'e $\R$ \`e semplicemente connesso, esiste un'omotopia $H: I \times I \to \R$ da $\tilde{f}$ al camminio costante in $0$.
     Ma a questo punto si ha che $\rho \circ H$ è un'omotopia da $f$ al cammino costante in $1$, quindi $f$ è omotopo al cammino costante in $1$.
 \end{proof}
 
 \begin{proof} (del teorema) \nl
+    OK LA DIMOSTRAZIONE DI QUESTO FATTO FATTA DA TAMAS \`E RIDICOLA, MEGLIO FARE QUELLA PIU\' GENERALE DI FRIGERIO QUANDO SAR\`A POI
     \begin{enumerate}
-        \item si consideri il ricoprimento di aperti di $S^1$ dato da due aperti $U_0, U_1$, archi che si intersecano in due componenti 
-        connesse per archi di $S^1$, una che contiene $1$ e l'altra che contiene $-1$. 
+        \item si consideri il ricoprimento di aperti di $\Sph{1}$ dato da due aperti $U_0, U_1$, archi che si intersecano in due componenti 
+        connesse per archi di $\Sph{1}$, una che contiene $1$ e l'altra che contiene $-1$. 
         \nl
         DISEGNO DA FARE
         \nl
+        Considero le componenti connesse per archi di $\rho^{-1}(U_1)$, che formano un ricorpimento di aperti
+        per $\rho^{-1}(U_1)$. La mappa $\rho$ induce un omeomorfismo 
+        $\rho\big|_{\rho^{-1}(U_1)}: \rho^{-1}(U_1) \to U_1$(si vedr\`a che \`e un rivestimento di $U_1$)).
         \nl
-
-
+        Inoltre, le componenti connesse per archi di $f^{-1}(U_0), f^{-1}(U_1)$ formano un ricoprimento di aperti per $I$.
+        \nl
+        L'intervallo $I$ \`e uno spazio metrico compatto, e dunque ammette un numero di Lebesgue. \nl
+        Siano quindi $t_0 = 0 < t_1 < t_2 < \ldots < t_n = 1$ i punti di $I$ tali che
+        ciascun intervallo della $\left[t_i, t_{i+1}\right]$ \`e interamente contenuto in uno
+        ed uno solo tra  $f^{-1}(U_0)$ e $f^{-1}(U_1)$ e inoltre $t_i \in f^{-1}(U_0) \cap f^{-1}(U_1) \quad \forall i$.
+        \nl
     \end{enumerate}
 \end{proof}
 
+\begin{corollary} \nl
+    \[  
+        \pi_1(\R^n \setminus \set{0}) \cong \pi_1(D^n \setminus \set{0}) \cong \Z
+    \]
+    In particolare $\Disc{2} \setminus \set{0}$ non \`e omotopicamente equivalente $\Disc{2}$(e quindi nemmeno omeomorfo).
+\end{corollary}
 
+\begin{definition} [Retrazione] \nl
+    Sia $Y \subset X$ un sottospazio topologico. Si dice che una mappa continua $r: X \to Y$ \`e una retraazione se vale
+    \[
+        r \circ i = \id_Y
+    \]
+    dove $i: Y \into X$ \`e l'inclusione di $Y$ in $X$. \nl 
+    In altre parole, $r$ \`e una retrazione se \`e continua e manda ogni punto di $Y$ su se stesso. \nl
+    Si dice che $Y$ \`e \textbf{retratto} in $X$ se esiste una retrazione da $X$ a $Y$.
+\end{definition}
+
+\begin{example}
+    \begin{enumerate}
+        \item  In ogni spazio topologico $X$ ogni punto ${x_0} \subset X$ \`e un retratto di $X$.
+        \item  Il segmento $I = [-1, 1]$ \`e un retratto di $\bar{\Disc{2}} = \closedball{0}{1}$, infatti la mappa
+            \[
+                r: \bar{\Disc{2}} \to I: (x,y) \mapsto x
+            \]
+            \`e una retrazione, poich\'e $r$ manda ogni punto del segmento su se stesso.
+
+    \end{enumerate}
+\end{example}
+
+\begin{lemma} [Retrazione e gruppo fondamentale] \nl
+    Sia $Y \subset X$ un retratto di $X$ e sia $x_0 \in Y$. Allora la mappa indotta dall'inclusione naturale
+    \[
+        i_*: \pi_1(Y, x_0) \to \pi_1(X, x_0)
+    \]
+    \`e un omomorfismo di gruppi \textbf{iniettivo}
+\end{lemma}
+
+\begin{proof} \nl
+    \[\begin{tikzcd}
+	{\pi_1\left(Y, x_0\right)} & {\pi_1\left(X, x_0\right)} & {\pi_1\left(Y, x_0\right)}
+	\arrow["{i_*}", from=1-1, to=1-2]
+	\arrow["\id"', curve={height=18pt}, from=1-1, to=1-3]
+	\arrow["{r_*}", from=1-2, to=1-3]
+    \end{tikzcd}\]
+    Dunque $r_* \circ i_* = \id_{\pi_1(Y, x_0)}$, quindi $i_*$ \`e iniettiva perch\'e ha inversa sinistra. \nl
+\end{proof}
+
+\begin{corollary} \nl
+    $\Sph{1}$ non \`e un retratto di $\bar{\Disc{2}}$.
+\end{corollary}
+
+\begin{proof}
+    \[\begin{tikzcd}
+	\Z & {\pi_1\left(\Sph{1}, 1\right)} & {\pi_1\left(\bar{\Disc{1}}, 1\right)} & {\set{1}}
+	\arrow["\cong"{description}, draw=none, from=1-1, to=1-2]
+	\arrow["{i_*}", from=1-2, to=1-3]
+	\arrow["\cong"{description}, draw=none, from=1-3, to=1-4]
+\end{tikzcd}\]
+    e quindi $i_*$ non \`e iniettiva, perch\'e \`e forzata ad essere banale. 
+\end{proof}
+
+\begin{theorem} [Brouwer] \nl
+    Ogni applicazione continua $f: \Disc{2} \to \Disc{2}$ ammette un punto fisso.
+\end{theorem}
+
+\begin{proof}
+    La dimostrazione \`e per assurdo. \nl
+    Si supponga che per ogni punto $x \in \Disc{2}$ si ha che $f(x) \neq x$. \nl
+    Consideriamo la mappa continua
+    \[
+        r: \Disc{2} \to \Sph{1}: x \mapsto \frac{f(x) - x}{\norm{f(x) - x}}.
+    \]
+    Questa mappa associa ad ogni punto $x \in \Disc{2}$ un punto sulla circonferenza unitaria $\Sph{1}$, che rappresenta la direzione del vettore che punta da $x$ a $f(x)$. \nl
+    Una tale mappa sarebbe una retrazione del disco unitario $\Disc{2}$ su $\Sph{1}$, poiché ogni punto di $\Sph{1}$ sarebbe raggiunto da un punto di $\Disc{2}$ che non si mappa su se stesso. 
+    $\contradiction$
+\end{proof}
+
+\begin{theorem} [Fondamentale dell'algebra] \nl
+    Ogni $f(x) \in \C[x]$ polinomio di grado $n \geq 1$ ammette almeno una radice complessa.
+\end{theorem}
+
+\begin{proof} \nl
+    Si supponga $f(z) \neq 0 \quad \forall z \in \C$, allora $\forall r > 0$ la mappa
+    \[
+        f_r(t) := \frac{f\left(r \cos(2\pi t) + ir\sin(2 \pi t)\right)}{\abs{f\left(r \cos(2\pi t) + ir\sin(2 \pi t)\right)}}
+    \]
+    definisce un cammino chiuso in $I \to \Sph{1}$ che parte da $1$. \nl
+    La famiglia di cammini chiusi $\set{f_r | r \in I}$ rappresenta un'omotopia tra il cammino costante $f_0: I \to \set{1}$ e il cammino chiuso
+    $f_1$. \nl
+    Componendo inoltre con la mappa $I \to [0,r]: s \to sr$ otteniamo un'omotopia ad estremi fissi tra il cammino costante e il cammino chiuso $f_r$. \nl
+    Quindi $\left[f_r^0 \right] = 0 \in \Z$. Vogliamo ora dimostrare che $\left[f_r^1 \right] \neq 0 \in \Z$  per ogni $r > 0$ e raggiungere una contraddizione. \nl
+    Sia ora il polinomio
+    \[
+        f(z) = z^n + a_{n-1}z^{n-1} + \ldots + a_0
+    \]
+    e per $s \in I$ si consideri
+    \[
+        f_r^s(z) = z^n + s\left( a_{n-1}z^{n-1} + \ldots + a_0 \right).
+    \]
+    Se $r > \max\set{1, \sum \abs{a_i}}$ e $\abs{z} = r$, allora
+    \[
+        \abs{z^n} = r^n > s \left( \sum \abs{a_i} \right) \abs{z^{n-1}} \geq \abs{s\left(a_{n-1}z^{n-1} + \dots + a_0\right)}
+    \]
+    e quindi poich\'e vi \`e il maggiore stretto se $\abs{z} = r$, $f_r^s(z) \neq 0$ per ogni $s \in I$. \nl
+    In particolare vale 
+    \[
+        f_r^s(r \cos{2\pi t} + ir\sin(2 \pi t) \neq 0 
+    \]
+    E quindi \`e ben definita la famiglia di cammini chiusi
+    \[
+        f_r^s: I \to \Sph{1}: t \mapsto \frac{f_r^s\left(r \cos{2\pi t} + ir\sin(2 \pi t)\right)}{\abs{f_r^s\left(r \cos{2\pi t} + ir\sin(2 \pi t)\right)}}.
+    \]
+    che da un'omotopia tra $f_r^0$ e $f_r^1$. \nl
+    $f^0 = z^n$ e quindi $f_r^0(t) = \cos(2 n \pi t) + i\sin(2 n \pi t)$
+    ma si avrebbe quindi che la classe di omotopia di $f_r^0$ \`e $n \in \Z$, ma ci\`o contraddice il fatto che
+    $\left[f_r^0 \right] = 0 \in \Z$.
+\end{proof}
+
+\begin{theorem} [debole di Seifert-van Kampen] \nl
+    Siano $X = X_1 \cup X_2$ dove $X_1, X_2 \subset X$ sono aperti. Siano $i_1: X_1 \into X$ e $i_2: X_2 \into X$ le inclusioni naturali. \nl
+    Si suppongano $X, X_1, X_2, X_1 \cap X_2$ connessi per archi allora:
+    \[
+        \pi_1(X, x_0) \text{\`e generato da } i_{1*}\left(\pi_1\left(X_1, x_0\right)\right) \text{ e } i_{2*}\left(\pi_1\left(X_2, x_0\right)\right) \text{dove } x_0 \in X_1 \cap X_2.
+    \]
+\end{theorem}
+
+\begin{proof}
+
+\end{proof}
+
+\begin{corollary} \nl
+    $\Sph{n}$ \`e semplicemente connesso per ogni $n \geq 1$.'
+\end{corollary}
+
+\begin{corollary} \nl
+    $\R^n \setminus \set{0}$ \`e omotopicamente equivalente a $\Sph{n-1}$ per ogni $n \geq 2$. \nl
+    Quindi $\pi_1(\R^2 \setminus \set{0}) \cong \Z$ e $\pi_1(\R^n \setminus \set{0}) \cong \set{1}$ per ogni $n \geq 2$
+\end{corollary}
+
+\begin{corollary} \nl
+    $\R^2$ non \`e omeomorfo a $\R^n$ per ogni $n \geq 3$.
+\end{corollary}
+
+\begin{theorem} (di Seifert-van Kampen) \nl
+    Siano $X = X_1 \cup X_2$ dove $X_1, X_2 \subset X$ sono aperti. \nl
+    Siano $j_1: X_1 \cap X_2 \into X_1, j_2, X_1 \cap X_2 \into X_2, i_1: X_1 \into X, i_2: X_2 \into X$ le inclusioni naturali. \nl
+    Si suppongano $X, X_1, X_2, X_1 \cap X_2$ connessi per archi allora
+
+    $\forall G$ gruppo, e mappe $\varphi_1: \pi_1(X_1 \cap X_2, x_0) \to G$ e $\varphi_2: \pi_1(X_2, x_0) \to G$ esiste un unica mappa
+    \[
+        \varphi: \pi_1(X, x_0) \to G
+    \]
+    tale che il seguente diagramma commuta:
+    % https://q.uiver.app/#q=WzAsNSxbMSwwLCJcXHBpXzFcXGxlZnQoWF8xLCB4XzBcXHJpZ2h0KSJdLFsxLDIsIlxccGlfMVxcbGVmdChYXzIsIHhfMFxccmlnaHQpIl0sWzAsMSwiXFxwaV8xXFxsZWZ0KFhfMSBcXGNhcCBYXzIsIHhfMFxccmlnaHQpIl0sWzIsMSwiXFxwaV8xXFxsZWZ0KFgsIHhfMFxccmlnaHQpIl0sWzMsMSwiRyJdLFswLDQsIlxcdmFycGhpXzEiXSxbMCwzLCJpX3sxKn0iLDJdLFsxLDMsImlfezIqfSJdLFszLDQsIlxcZXhpc3RzIVxcdmFycGhpIiwwLHsiY29sb3VyIjpbMCw2MCw2MF19LFswLDYwLDYwLDFdXSxbMiwwLCJqX3sxKn0iXSxbMiwxLCJqX3syKn0iLDFdLFsxLDQsIlxcdmFycGhpXzIiXV0=
+    \[\begin{tikzcd}
+	& {\pi_1\left(X_1, x_0\right)} \\
+	{\pi_1\left(X_1 \cap X_2, x_0\right)} && {\pi_1\left(X, x_0\right)} & G \\
+	& {\pi_1\left(X_2, x_0\right)}
+	\arrow["{i_{1*}}"', from=1-2, to=2-3]
+	\arrow["{\varphi_1}", from=1-2, to=2-4]
+	\arrow["{j_{1*}}", from=2-1, to=1-2]
+	\arrow["{j_{2*}}"{description}, from=2-1, to=3-2]
+	\arrow["{\exists!\varphi}", color={rgb,255:red,214;green,92;blue,92}, from=2-3, to=2-4]
+	\arrow["{i_{2*}}", from=3-2, to=2-3]
+	\arrow["{\varphi_2}", from=3-2, to=2-4]
+    \end{tikzcd}\]
+\end{theorem}
 
 \section{Rivestimenti}
 

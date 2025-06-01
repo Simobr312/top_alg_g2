@@ -2,4 +2,4 @@
 \babel@toc {italian}{}\relax 
 \contentsline {section}{\numberline {1}Gruppo Fondamentale}{1}{section.1}%
 \contentsline {subsection}{\numberline {1.1}Motivazione}{1}{subsection.1.1}%
-\contentsline {section}{\numberline {2}Rivestimenti}{7}{section.2}%
+\contentsline {section}{\numberline {2}Rivestimenti}{10}{section.2}%
