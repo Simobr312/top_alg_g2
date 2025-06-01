@@ -39,7 +39,7 @@
 \tableofcontents
 
 \section{Gruppo Fondamentale}
-\subsection{Motivazione}
+\subsection{Omotopia}
     Una delle motivazioni che porta a definire il gruppo fondamentale è la necessità di distinguere
     due spazi topologici a meno di omeomorfismo.
 
@@ -137,6 +137,7 @@
         la giunzione è chiaramente sempre definita.
     \end{remark}
 
+\subsection{Definizione del gruppo fondamentale}
     Da ora in poi gli spazi topologici considerati saranno sempre localmente connessi.
 
     \begin{theorem} [Poincar\'e] \nl
@@ -440,6 +441,8 @@
          
 \end{proof}
 
+\subsection{Primi gruppi fondamentali}
+
 Da questo momento in poi, se $X$ \`e uno spazio topologico connesso per archi, si denota con $\pi_1(X)$ il gruppo fondamentale di uno spazio topologico $X$ in un punto fissato.
 
 \begin{theorem} [Gruppo fondamentale del cerchio] \nl
@@ -557,8 +560,299 @@ Da questo momento in poi, se $X$ \`e uno spazio topologico connesso per archi, s
 \end{lemma}
 
 \begin{proof} \nl
-   
+    \[\begin{tikzcd}
+	{\pi_1\left(Y, x_0\right)} & {\pi_1\left(X, x_0\right)} & {\pi_1\left(Y, x_0\right)}
+	\arrow["{i_*}", from=1-1, to=1-2]
+	\arrow["\id"', curve={height=18pt}, from=1-1, to=1-3]
+	\arrow["{r_*}", from=1-2, to=1-3]
+    \end{tikzcd}\]
+    Dunque $r_* \circ i_* = \id_{\pi_1(Y, x_0)}$, quindi $i_*$ \`e iniettiva perch\'e ha inversa sinistra. \nl
 \end{proof}
+
+\begin{corollary} \nl
+    $\Sph{1}$ non \`e un retratto di $\bar{\Disc{2}}$.
+\end{corollary}
+
+\begin{proof}
+    \[\begin{tikzcd}
+	\Z & {\pi_1\left(\Sph{1}, 1\right)} & {\pi_1\left(\bar{\Disc{1}}, 1\right)} & {\set{1}}
+	\arrow["\cong"{description}, draw=none, from=1-1, to=1-2]
+	\arrow["{i_*}", from=1-2, to=1-3]
+	\arrow["\cong"{description}, draw=none, from=1-3, to=1-4]
+\end{tikzcd}\]
+    e quindi $i_*$ non \`e iniettiva, perch\'e \`e forzata ad essere banale. 
+\end{proof}
+
+\begin{theorem} [Brouwer] \nl
+    Ogni applicazione continua $f: \Disc{2} \to \Disc{2}$ ammette un punto fisso.
+\end{theorem}
+
+\begin{proof}
+    La dimostrazione \`e per assurdo. \nl
+    Si supponga che per ogni punto $x \in \Disc{2}$ si ha che $f(x) \neq x$. \nl
+    Consideriamo la mappa continua
+    \[
+        r: \Disc{2} \to \Sph{1}: x \mapsto \frac{f(x) - x}{\norm{f(x) - x}}.
+    \]
+    Questa mappa associa ad ogni punto $x \in \Disc{2}$ un punto sulla circonferenza unitaria $\Sph{1}$, che rappresenta la direzione del vettore che punta da $x$ a $f(x)$. \nl
+    Una tale mappa sarebbe una retrazione del disco unitario $\Disc{2}$ su $\Sph{1}$, poiché ogni punto di $\Sph{1}$ sarebbe raggiunto da un punto di $\Disc{2}$ che non si mappa su se stesso. 
+    $\contradiction$
+\end{proof}
+
+\begin{theorem} [Fondamentale dell'algebra] \nl
+    Ogni $f(x) \in \C[x]$ polinomio di grado $n \geq 1$ ammette almeno una radice complessa.
+\end{theorem}
+
+\begin{proof} \nl
+    Si supponga $f(z) \neq 0 \quad \forall z \in \C$, allora $\forall r > 0$ la mappa
+    \[
+        f_r(t) := \frac{f\left(r \cos(2\pi t) + ir\sin(2 \pi t)\right)}{\abs{f\left(r \cos(2\pi t) + ir\sin(2 \pi t)\right)}}
+    \]
+    definisce un cammino chiuso in $I \to \Sph{1}$ che parte da $1$. \nl
+    La famiglia di cammini chiusi $\set{f_r | r \in I}$ rappresenta un'omotopia tra il cammino costante $f_0: I \to \set{1}$ e il cammino chiuso
+    $f_1$. \nl
+    Componendo inoltre con la mappa $I \to [0,r]: s \to sr$ otteniamo un'omotopia ad estremi fissi tra il cammino costante e il cammino chiuso $f_r$. \nl
+    Quindi $\left[f_r^0 \right] = 0 \in \Z$. Vogliamo ora dimostrare che $\left[f_r^1 \right] \neq 0 \in \Z$  per ogni $r > 0$ e raggiungere una contraddizione. \nl
+    Sia ora il polinomio
+    \[
+        f(z) = z^n + a_{n-1}z^{n-1} + \ldots + a_0
+    \]
+    e per $s \in I$ si consideri
+    \[
+        f_r^s(z) = z^n + s\left( a_{n-1}z^{n-1} + \ldots + a_0 \right).
+    \]
+    Se $r > \max\set{1, \sum \abs{a_i}}$ e $\abs{z} = r$, allora
+    \[
+        \abs{z^n} = r^n > s \left( \sum \abs{a_i} \right) \abs{z^{n-1}} \geq \abs{s\left(a_{n-1}z^{n-1} + \dots + a_0\right)}
+    \]
+    e quindi poich\'e vi \`e il maggiore stretto se $\abs{z} = r$, $f_r^s(z) \neq 0$ per ogni $s \in I$. \nl
+    In particolare vale 
+    \[
+        f_r^s(r \cos{2\pi t} + ir\sin(2 \pi t) \neq 0 
+    \]
+    E quindi \`e ben definita la famiglia di cammini chiusi
+    \[
+        f_r^s: I \to \Sph{1}: t \mapsto \frac{f_r^s\left(r \cos{2\pi t} + ir\sin(2 \pi t)\right)}{\abs{f_r^s\left(r \cos{2\pi t} + ir\sin(2 \pi t)\right)}}.
+    \]
+    che da un'omotopia tra $f_r^0$ e $f_r^1$. \nl
+    $f^0 = z^n$ e quindi $f_r^0(t) = \cos(2 n \pi t) + i\sin(2 n \pi t)$
+    ma si avrebbe quindi che la classe di omotopia di $f_r^0$ \`e $n \in \Z$, ma ci\`o contraddice il fatto che
+    $\left[f_r^0 \right] = 0 \in \Z$.
+\end{proof}
+
+\subsection{Teorema di Seifert-Van Kampen e richiami di teoria dei gruppi}
+
+\begin{theorem} [debole di Seifert-van Kampen] \nl
+    Siano $X = X_1 \cup X_2$ dove $X_1, X_2 \subset X$ sono aperti. Siano $i_1: X_1 \into X$ e $i_2: X_2 \into X$ le inclusioni naturali. \nl
+    Si suppongano $X, X_1, X_2, X_1 \cap X_2$ connessi per archi allora:
+    \[
+        \pi_1(X, x_0) \text{\`e generato da } i_{1*}\left(\pi_1\left(X_1, x_0\right)\right) \text{ e } i_{2*}\left(\pi_1\left(X_2, x_0\right)\right) \text{dove } x_0 \in X_1 \cap X_2.
+    \]
+\end{theorem}
+
+\begin{proof}
+
+\end{proof}
+
+\begin{corollary} \nl
+    $\Sph{n}$ \`e semplicemente connesso per ogni $n \geq 1$.'
+\end{corollary}
+
+\begin{corollary} \nl
+    $\R^n \setminus \set{0}$ \`e omotopicamente equivalente a $\Sph{n-1}$ per ogni $n \geq 2$. \nl
+    Quindi $\pi_1(\R^2 \setminus \set{0}) \cong \Z$ e $\pi_1(\R^n \setminus \set{0}) \cong \set{1}$ per ogni $n \geq 2$
+\end{corollary}
+
+\begin{corollary} \nl
+    $\R^2$ non \`e omeomorfo a $\R^n$ per ogni $n \geq 3$.
+\end{corollary}
+
+\begin{theorem} (di Seifert-van Kampen) \nl
+    Siano $X = X_1 \cup X_2$ dove $X_1, X_2 \subset X$ sono aperti. \nl
+    Siano $j_1: X_1 \cap X_2 \into X_1, j_2, X_1 \cap X_2 \into X_2, i_1: X_1 \into X, i_2: X_2 \into X$ le inclusioni naturali. \nl
+    Si suppongano $X, X_1, X_2, X_1 \cap X_2$ connessi per archi allora
+
+    $\forall G$ gruppo, e mappe $\varphi_1: \pi_1(X_1 \cap X_2, x_0) \to G$ e $\varphi_2: \pi_1(X_2, x_0) \to G$ esiste un unica mappa
+    \[
+        \varphi: \pi_1(X, x_0) \to G
+    \]
+    tale che il seguente diagramma commuta:
+    % https://q.uiver.app/#q=WzAsNSxbMSwwLCJcXHBpXzFcXGxlZnQoWF8xLCB4XzBcXHJpZ2h0KSJdLFsxLDIsIlxccGlfMVxcbGVmdChYXzIsIHhfMFxccmlnaHQpIl0sWzAsMSwiXFxwaV8xXFxsZWZ0KFhfMSBcXGNhcCBYXzIsIHhfMFxccmlnaHQpIl0sWzIsMSwiXFxwaV8xXFxsZWZ0KFgsIHhfMFxccmlnaHQpIl0sWzMsMSwiRyJdLFswLDQsIlxcdmFycGhpXzEiXSxbMCwzLCJpX3sxKn0iLDJdLFsxLDMsImlfezIqfSJdLFszLDQsIlxcZXhpc3RzIVxcdmFycGhpIiwwLHsiY29sb3VyIjpbMCw2MCw2MF19LFswLDYwLDYwLDFdXSxbMiwwLCJqX3sxKn0iXSxbMiwxLCJqX3syKn0iLDFdLFsxLDQsIlxcdmFycGhpXzIiXV0=
+    \[\begin{tikzcd}
+	& {\pi_1\left(X_1, x_0\right)} \\
+	{\pi_1\left(X_1 \cap X_2, x_0\right)} && {\pi_1\left(X, x_0\right)} & G \\
+	& {\pi_1\left(X_2, x_0\right)}
+	\arrow["{i_{1*}}"', from=1-2, to=2-3]
+	\arrow["{\varphi_1}", from=1-2, to=2-4]
+	\arrow["{j_{1*}}", from=2-1, to=1-2]
+	\arrow["{j_{2*}}"{description}, from=2-1, to=3-2]
+	\arrow["{\exists!\varphi}", color={rgb,255:red,214;green,92;blue,92}, from=2-3, to=2-4]
+	\arrow["{i_{2*}}", from=3-2, to=2-3]
+	\arrow["{\varphi_2}", from=3-2, to=2-4]
+    \end{tikzcd}\]
+\end{theorem}
+
+Il teorema di Van-Kampen necessit\`a di un richiamo di teoria dei gruppi, che non \`e stato ancora fatto. \nl
+
+\begin{definition} [Gruppo libero generato da un insieme] \nl
+    Dato un insieme $X$ si indica $F(X)$ il \textbf{gruppo libero generato da $X$} il dato di
+    un gruppo $F(X)$ ed una mappa iniettiva $s: X \into F(X)$ tale che la seguente propriet
+    `a universale sia soddisfatta: \nl 
+    Per ogni gruppo $G$ e per ogni mappa iniettiva $f: X \into G$ esiste un unico omomorfismo di gruppi
+    \[
+        \bar{f}: F(X) \to G
+    \]
+    tale che il seguente diagramma commuta:
+
+    \[\begin{tikzcd}
+	{F(X)} & G & {} \\
+	X
+	\arrow["{\exists!\bar{f}}", from=1-1, to=1-2]
+	\arrow["s", from=2-1, to=1-1]
+	\arrow["f"', from=2-1, to=1-2]
+    \end{tikzcd}\]
+
+\end{definition}
+
+\begin{proposition} [Unicit\`a del gruppo libero] \nl
+    Dalla definizione di gruppo libero via propriet\`a universale ne segue l'unicit\`a a meno di isomorfismo di gruppi.
+\end{proposition}
+
+\begin{proof}
+    Facile provaci un attimo
+\end{proof}
+
+\begin{proposition} [Costruzione del gruppo libero generato da un insieme] \nl
+    Si costruisce ora $F(X)$ nel seguente modo: \nl
+    Sull'insieme
+    \[
+        F(X) = \set{w \in X^* \mid w \text{ parola su } X} / \sim
+    \]
+    dove una parola $w \in X$ \`e una sequenza un prodotto formale tra simboli della fomra
+    \[
+        w = x_{i_1}^{\epsilon_1} x_{i_2}^{\epsilon_2} \ldots x_{i_n}^{\epsilon_n}
+    \]
+    con $x_i \in X$ e $\epsilon_i \in \set{1, -1}$, e la relazione di equivalenza $\sim$ identifica due parole
+    se e solo se sono uguali a meno di semplificare i fattori di forma $x_i^{\epsilon_i} x_i^{-\epsilon_i}$. \nl
+    L'operazione di gruppo su $F(X)$ \`e data dalla concatenazione formale di parole. \nl
+
+    Tale costruzione verifica la propriet\`a universale del gruppo libero generato da $X$.
+\end{proposition}
+
+\begin{proof} \nl
+    Per ogni mappa $f: X \into G$ in un gruppo $G$ si definisce la mappa
+    \[
+        \bar{f}: F(X) \to G: x_{i_1}^{\epsilon_1} x_{i_2}^{\epsilon_2} \ldots x_{i_n}^{\epsilon_n} \mapsto f(x_1)^{\epsilon_1} f(x_2)^{\epsilon_2} \ldots f(x_n)^{\epsilon_n}
+    \]
+\end{proof}
+
+\begin{lemma} \nl
+    Ogni gruppo $G$ \`e il quoziente di un gruppo libero.
+\end{lemma}
+
+\begin{proof} \nl
+    Se $\set{g_i \mid i \in I}$ si considera $X = \set{x_i \mid i \in I}$ e la mappa
+    \[
+        \Phi: F(X) \to G: x_i \to g_i \quad \text{ assegnamento per generatori}
+    \]
+    se i $g_i$ sono un insieme di generatori per $G$ allora $\Phi$ \`e surgettiva e si conclude
+    per il primo teorema di omomorfismo tra gruppi.
+\end{proof}
+
+\begin{definition} [Presentazione di un gruppo] \nl
+    Data $\Phi$ come sopra, sia $N := \ker{\Phi}$ si pu\`o considerare un \textbf{sisterma di generatori per N come sottogruppo normale}
+    $\set{p_j \mid j \in J}$, la \textbf{presentazione tramite generatori e relazioni di G} \`e la seguente:
+    \[
+        G := \left< g_i, \ i \in I \mid p_j, \ j \in J \right>
+    \]
+\end{definition}
+
+\begin{definition} [Prodotto libero di gruppi] \nl
+    Siano $G_1, G_2$ due gruppi, si definisce il \textbf{prodotto libero di gruppi} $G_1 * G_2$
+    il dato di un gruppo $G_1*G_2$ e mappe $\gamma_1: G_1 \to _1*G_2$, $\gamma_2: G_2 \to _1*G_2$
+    che soddisfano la seguente propriet\`a universale: \nl
+    Per ogni altro gruppo $G$ e mappe $\phi_1: G_1 \to G$ e $\phi_2: G_2 \to G$
+    esiste un'unica mappa $\phi: G_1 * G_2 \to G$ tale che il seguente diagramma commuti:
+     \[
+    \begin{tikzcd}
+    {G_1} \\
+    & {G_1*G_2} & {\textcolor{blue}{G}} \\
+    {G_2}
+    \arrow["{\gamma_1}", from=1-1, to=2-2]
+    \arrow["{\varphi_1}", color={rgb,255:red,92;green,92;blue,214}, curve={height=-12pt}, from=1-1, to=2-3]
+    \arrow["{\exists!\varphi}", color={rgb,255:red,214;green,92;blue,92}, dashed, from=2-2, to=2-3]
+    \arrow["{\gamma_2}"', from=3-1, to=2-2]
+    \arrow["{\varphi_2}", color={rgb,255:red,92;green,92;blue,214}, curve={height=12pt}, from=3-1, to=2-3]
+    \end{tikzcd}
+    \]
+    In teoria delle categorie tale costruzione \`e detta \textbf{coprodotto}.
+\end{definition}
+
+\begin{proposition} [Unicit\`a del prodotto libero di gruppi] \nl
+    Dalla definizione via propriet\`a universale segue che il prodotto libero \`e unico a meno di isomorfismo di gruppi.
+\end{proposition}
+
+\begin{proof}
+    Da fare, facile
+\end{proof}
+
+\begin{proposition} [Costruzione del prodotto libero tra gruppi]
+    Siano 
+    \[
+        G_1 = \left< g_i^1, \ i \in I_1 \mid p_j^1, \ j \in J_1 \right> \quad G_2 = \left< g_i^2, \ i \in I_2 \mid p_j^2, \ j \in J_2 \right>
+    \]
+    le due presentazioni dei gruppi, allora la presentazione del prodotto libero \`e data da:
+    \[
+        G_1*G_2 = \left< \set{g_i^1} \cup \set{g_i^2} \bigm| \set{p_j^1} \cup \set{p_j^2} \right>
+    \]
+
+\end{proposition}
+
+\begin{remark} \nl
+    \begin{enumerate}
+        \item Il gruppo libero \`e generato dalle immagini dei generatori dei gruppi fattori.
+        \item Gli elementi di $G_1*G_2$ sono parole in $G_1 \cup G_2$
+        \item Se $X_1, X_2$ sono due insiemi allora 
+            \[
+                F(X_1 \cup X_2) = F(X_1) * F(X_2)
+            \]
+    \end{enumerate}
+\end{remark}
+
+\begin{definition} [Prodotto amalgamato di gruppi] \nl
+    Siano $G_1, G_2$ due gruppi e $H$ un terzo gruppo, si definisce il \textbf{prodotto amalgmato di gruppi su H} $G_1 *_H G_2$
+    il dato di un gruppo $G_1 *_H G_2$ e mappe $\beta_1: H \to G_1$, $\beta_2: H \to G_2, \gamma_1: G_1 \to _1*G_2$, $\gamma_2: G_2 \to _1*G_2$
+    che soddisfano la seguente propriet\`a universale: \nl
+    Per ogni altro gruppo $G$ e mappe $\phi_1: G_1 \to G$ e $\phi_2: G_2 \to G$
+    esiste un'unica mappa $\phi: G_1 * G_2 \to G$ tale che il seguente diagramma commuti:
+    % https://q.uiver.app/#q=WzAsNSxbMSwyLCJHXzIiXSxbMSwwLCJHXzEiXSxbMiwxLCJHXzEqR18yIl0sWzMsMSwiRyJdLFswLDEsIkgiXSxbMSwyLCJcXGdhbW1hXzEiXSxbMCwyLCJcXGdhbW1hXzIiLDJdLFsxLDMsIlxcdmFycGhpXzEiLDAseyJjdXJ2ZSI6LTIsImNvbG91ciI6WzI0MCw2MCw2MF19LFsyNDAsNjAsNjAsMV1dLFswLDMsIlxcdmFycGhpXzIiLDAseyJjdXJ2ZSI6MiwiY29sb3VyIjpbMjQwLDYwLDYwXX0sWzI0MCw2MCw2MCwxXV0sWzIsMywiXFxleGlzdHMhXFx2YXJwaGkiLDAseyJjb2xvdXIiOlswLDYwLDYwXSwic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn19fSxbMCw2MCw2MCwxXV0sWzQsMSwiXFxiZXRhXzEiXSxbNCwwLCJcXGJldGFfMiJdXQ==
+    \[\begin{tikzcd}
+        & {G_1} \\
+        H && {G_1*G_2} & G \\
+        & {G_2}
+        \arrow["{\gamma_1}", from=1-2, to=2-3]
+        \arrow["{\varphi_1}", color={rgb,255:red,92;green,92;blue,214}, curve={height=-12pt}, from=1-2, to=2-4]
+        \arrow["{\beta_1}", from=2-1, to=1-2]
+        \arrow["{\beta_2}", from=2-1, to=3-2]
+        \arrow["{\exists!\varphi}", color={rgb,255:red,214;green,92;blue,92}, dashed, from=2-3, to=2-4]
+        \arrow["{\gamma_2}"', from=3-2, to=2-3]
+        \arrow["{\varphi_2}", color={rgb,255:red,92;green,92;blue,214}, curve={height=12pt}, from=3-2, to=2-4]
+    \end{tikzcd}\]
+\end{definition}
+
+\begin{proposition} [Costruzione del prodotto amalgamato se $H$ \`e un gruppo libero] \nl
+    Siano
+    \[
+        G_1 = \left< g_i^1, \ i \in I_1 \mid p_j^1, \ j \in J_1 \right> \quad G_2 = \left< g_i^2, \ i \in I_2 \mid p_j^2, \ j \in J_2 \right>
+    \]
+    \[
+        H =  \left< g_i^1, \ i \in I_1 \right> \text{ che non ha relazioni perch\'e libero}
+    \]
+    allora
+    \[
+        G_1 *_H G_2 = \left< \set{g_i^1} \cup \set{g_i^2} \bigm| \set{p_j^1} \cup \set{p_j^2} \cup \set{\beta_1(h_i)\beta_2(h_i)^{-1}} \right>
+    \]
+\end{proposition}
 
 \section{Rivestimenti}
 

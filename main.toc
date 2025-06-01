@@ -1,5 +1,8 @@
 \babel@toc {italian}{}\relax 
 \babel@toc {italian}{}\relax 
 \contentsline {section}{\numberline {1}Gruppo Fondamentale}{1}{section.1}%
-\contentsline {subsection}{\numberline {1.1}Motivazione}{1}{subsection.1.1}%
-\contentsline {section}{\numberline {2}Rivestimenti}{10}{section.2}%
+\contentsline {subsection}{\numberline {1.1}Omotopia}{1}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}Definizione del gruppo fondamentale}{2}{subsection.1.2}%
+\contentsline {subsection}{\numberline {1.3}Primi gruppi fondamentali}{6}{subsection.1.3}%
+\contentsline {subsection}{\numberline {1.4}Teorema di Seifert-Van Kampen e richiami di teoria dei gruppi}{9}{subsection.1.4}%
+\contentsline {section}{\numberline {2}Rivestimenti}{12}{section.2}%
