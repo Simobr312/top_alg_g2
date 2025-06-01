@@ -398,8 +398,29 @@
 \end{lemma}
 
 \begin{proof} \nl
-   
+    Si lavorer\`a con 
+    \[
+        \tau^{-1}_f = \tau_{f^{-1}}: \pi_1(Y, \varphi_1(x_0)) \to \pi_1(Y, \varphi_0(x_0)): g_Y \mapsto f*g_Y*f^{-1}.
+    \]
+    Inoltre si definisce, con $s \in I$ fisso la mappa
+    \[
+        f_s: I \to Y: t \mapsto f(st)
+    \]
+    che \`e una riparametrizzazione di $f$ ristretta a $[0,s]$, \`e facile verificare che 
+    $f_0: I \to {\varphi_0(x_0)}$ mentre $f_1 = f$ e dunque $f$ \`e omotopa al cammino costante tramite
+    l'omotopia data dalla famiglia $\set{f_s}_{s \in I}$. \nl
+    Sia ora $g_X$ un cammino chiuso in ${x_0}$, per quanto detto prima vale che la mappa
+    \[
+        I \to \pi_1(Y, \varphi_0(x_0)): s \mapsto f_s * \varphi_s(g_X) * f_s^{-1}
+    \]
+    induce un'omotopia tra $\varphi_0(g_X)$ e $f*\varphi_1(g_X)*f^{-1}$, e si \`e dunque mostrato che
+    \[
+        \left[ \varphi_0(g_X)\right] = \tau_f^{-1}(\varphi_{1*}\left[g_X\right]).
+    \]
 \end{proof}
+
+\begin{proof}
+\end{proof} 
 
 \section{Rivestimenti}
 
