@@ -67,7 +67,7 @@
         \textbf{continua} e tale che:
         \begin{itemize}
             \item $H(0,x) = f(x)$ per ogni $x \in X$;
-            \item $H(1,x) = g(x)$ per ogni $x \in X$.
+            \item $H(1,x) = g(x)$ per ogni $x \in X$;
             \item $H(s,y) = H(s,x)$ per ogni $s \in I$ e per ogni $x,y \in X$ tali che $f(x) = f(y)$.
         \end{itemize}
         Si dice che $H$ è un'\textbf{omotopia} tra $f$ e $g$ e si scrive
@@ -380,26 +380,137 @@
 \end{theorem}
 
 \begin{lemma} \nl
-    Siano $\varphi_0, \varphi_1: X \to Y$ due funzioni continue tra spazi topologici e siano $x_0 \in X$. \nl
+    Siano $\varphi_0, \varphi_1: X \to Y$ due funzioni continue \textbf{omotope} tra spazi topologici e siano $x_0 \in X$. \nl
     Il seguente diagramma commuta:
-    % https://q.uiver.app/#q=WzAsMyxbMCwxLCJcXHBpXzEoWF8seF8wKSJdLFsxLDAsIlxccGlfMShZLFxcdmFycGhpXzAoeF8wKSkiXSxbMSwyLCJcXHBpXzEoWSxcXHZhcnBoaV8xKHhfMCkpIl0sWzAsMSwiXFx2YXJwaGlfezAqfSJdLFswLDIsIlxcdmFycGhpX3sxKn0iLDJdLFsxLDIsIlxcdGF1X2YiXV0=
+    % https://q.uiver.app/#q=WzAsMyxbMCwxLCJcXHBpXzEoWF8seF8wKSJdLFsxLDAsIlxccGlmKFNfMSxYLFxcdmFycGhpXzAoeF8wKSkiXSxbMSwyLCJcXHBpXzEoWSxcXHZhcnBoaV8xKHhfMCkpIl0sWzAsMSwiXFx2YXJwaGlfezAqfSJdLFswLDIsIlxcdmFycGhpX3sxKn0iLDJdLFsxLDIsIlxcdGF1X2YiXV0=
     \[
         \begin{tikzcd}
-        & {\pi_1(Y,\varphi_0(x_0))} \\
-        {\pi_1(X_,x_0)} \\
-        & {\pi_1(Y,\varphi_1(x_0))}
+        & {\pi_1\left(Y,\varphi_0\left(x_0\right)\right)} \\
+        {\pi_1\left(X_,x_0\right)} \\
+        & {\pi_1\left(Y,\varphi_1\left(x_0\right)\right)}
         \arrow["{\tau_f}", from=1-2, to=3-2]
         \arrow["{\varphi_{0*}}", from=2-1, to=1-2]
         \arrow["{\varphi_{1*}}"', from=2-1, to=3-2]
         \end{tikzcd}
     \]
-    dove $\tau_f: \pi_1(Y, \varphi_0(x_0)) \to \pi_1(Y, \varphi_1(x_0))$ è l'isomorfismo indotto dal cammino
-    $f: I \to Y: s \mapsto \varphi_s(x_0)$ e $\set{\varphi_s | s \in I}$ \`e l'omotopia tra $\varphi_0$ e $\varphi_1$.
+    dove $\tau_f: \pi_1\left(Y, \varphi_0\left(x_0\right)\right) \to \pi_1\left(Y, \varphi_1\left(x_0\right)\right)$ è l'isomorfismo indotto dal cammino
+    $f: I \to Y: s \mapsto \varphi_s\left(x_0\right)$ e $\set{\varphi_s \mid s \in I}$ \`e l'omotopia tra $\varphi_0$ e $\varphi_1$.
 \end{lemma}
 
 \begin{proof} \nl
-   
+    Si consideri la mappa
+    \[
+        \tau^{-1}_f := \tau_{f^{-1}}: \pi_1\left(Y, \varphi_1\left(x_0\right)\right) \to \pi_1\left(Y, \varphi_0\left(x_0\right)\right): g_Y \mapsto f * g_Y * f^{-1}.
+    \]
+    Al variare di $s \in I$ si ha che
+    \[
+        f_s: I \to Y: t \mapsto f\left(st\right)
+    \]
+   rappresenta un'omotopia tra il cammino $f_0: I \to \set{\varphi_0\left(x_0\right)}$ 
+   e il cammino $f$. \nl
+   Quindi, se ora si considera $g_X$ un cammino chiuso in $x_0 \in X$, allora la mappa
+   \[
+        I \to \pi_1\left(Y, \varphi_0\left(x_0\right)\right): s \mapsto f_s * \varphi_{0}\left(g_X\right) * f_s^{-1}
+   \]
+   induce un'omotopia tra il cammino chiuso $\varphi_{0}\left(g_X\right)$ e il cammino chiuso
+    $f\left(\varphi_{1}\left(g_X\right)\right)$, dunque vale  che
+    \[
+        \varphi_{0*}\left(g_X\right) = \tau_f\left(\varphi_{1*}\left(g_X\right)\right).
+    \]
 \end{proof}
+
+\begin{proof} [del teorema] \nl
+    Siano $\varphi: X \to Y$ e $\psi: Y \to X$ le funzioni continue che definiscono l'equivalenza omotopica tra $X$ e $Y$. \nl
+    Grazie al lemma precedenta, dato che vale $\psi \circ \varphi \sim \id$ si ha che il seguente diagramma commuta:
+    % https://q.uiver.app/#q=WzAsNCxbMCwwLCJcXHBpXzFcXGxlZnQoWCwgeF8wIFxccmlnaHQpIl0sWzEsMCwiXFxwaV8xXFxsZWZ0KFksIFxcdmFycGhpXFxsZWZ0KHhfMFxccmlnaHQpIFxccmlnaHQpIl0sWzIsMCwiXFxwaV8xXFxsZWZ0KFksIChcXHBzaSBcXGNpcmMgXFx2YXJwaGkpXFxsZWZ0KHhfMFxccmlnaHQpIFxccmlnaHQpIl0sWzIsMSwiXFxwaV8xXFxsZWZ0KFgsIHhfMCBcXHJpZ2h0KSJdLFswLDMsIlxcaWQiLDJdLFswLDEsIlxcdmFycGhpXyoiXSxbMSwyLCJcXHBzaV8qIl0sWzIsMywiXFx0YXVfZiJdXQ==
+    \[
+    \begin{tikzcd}
+        {\pi_1\left(X, x_0 \right)} & {\pi_1\left(Y, \varphi\left(x_0\right) \right)} & {\pi_1\left(X, (\psi \circ \varphi)\left(x_0\right) \right)} \\
+        && {\pi_1\left(X, x_0 \right)}
+        \arrow["{\varphi_*}", from=1-1, to=1-2]
+        \arrow["\id"', from=1-1, to=2-3]
+        \arrow["{\psi_*}", from=1-2, to=1-3]
+        \arrow["{\tau_f}" right, "{\cong}" left, from=1-3, to=2-3]
+    \end{tikzcd}
+    \]
+    Cio\`e vale che $ \varphi_* \circ (\tau_f \circ \psi) = \id = (\varphi_* \circ \tau_f) \circ \psi$, quindi \`e un fatto generale che
+    segue che $\varphi_*$ \`e surgetiva e $\psi_*$ \`e surgettiva. \nl
+    Inoltre facendo lo stesso ragionamento con $\varphi \circ \psi \sim \id_Y$ si ha che 
+    $\varphi_*$ \`e surgettiva e $\psi_*$ \`e iniettiva, quindi sono isomorfismi tra i rispettivi
+    gruppi fondamentali.   
+\end{proof}
+
+Da questo momento in poi, se $X$ \`e uno spazio topologico connesso per archi, si denota con $\pi_1(X)$ il gruppo fondamentale di uno spazio topologico $X$ in un punto fissato.
+
+\begin{theorem} [Gruppo fondamentale del cerchio] \nl
+    \[
+        \pi_1\left(S^1 \right) \cong \Z.
+    \]
+    Ed il cammino chiuso $t \mapsto e^{2\pi i t}$ rappresenta il generatore del gruppo fondamentale $\pi_1\left(S^1, 1\right)$.
+\end{theorem}
+
+\begin{definition} [Mappa esponenziale] \nl
+    Si definisce la mappa
+    \[
+        \rho: \R \to S^1: t \mapsto e^{2\pi i t}
+    \]
+\end{definition}
+
+\begin{lemma} [Sollevamento di un cammino di $S^1$ in $\R$] \nl
+    \begin{enumerate}
+        \item Per ogni cammino chiuso $f: I \to S^1$ con $f(0) = f(1)$, 
+        \textbf{esiste ed unico} un cammino(in generale non chiuso) $\tilde{f}: I \to \R$ detto \textbf{sollevamento di $f$ in $\R$} tale che
+        \[
+            \tilde{f}(0) = 0 \quad \text{e} \quad \rho \circ \tilde{f} = f.
+        \]Il terminale mi dice di aver committato, ma su github la repository non sembra essere commi
+        Ovvero il seguente diagramma commuta:
+        \[\begin{tikzcd}
+            I & \R \\
+            & {S^1}
+            \arrow["{\tilde{f}}", from=1-1, to=1-2]
+            \arrow["f"', from=1-1, to=2-2]
+            \arrow["\rho", from=1-2, to=2-2]
+        \end{tikzcd}\]
+        \item Inoltre se $f_0, f_1$ sono due cammini chiusi omotopi allora
+        \[
+            \tilde{f}_0(1) = \tilde{f}_1(1) \in \Z
+        \] 
+    \end{enumerate}
+\end{lemma}
+
+\begin{proof} (Lemma $\implies$ Teorema) \nl
+    Dal lemma segue che la mappa:
+    \[
+        \Phi: \pi_1\left(S^1, 1\right) \to \Z: [f] \mapsto \tilde{f}(1)
+    \]Il terminale mi dice di aver committato, ma su github la repository non sembra essere commi
+    \`e ben definita, ed inoltre induce un omomorfismo di gruppi, poich\'e
+    \[
+        \Phi\left([\gamma_1 * \gamma_2]\right) = \tilde{\gamma}_1(1) + \tilde{\gamma}_2(1) = \Phi\left([\gamma_1]\right) + \Phi\left([\gamma_2]\right).
+    \].
+    Si dimostra ora la surgettivit\`a di $\Phi$, infatti dato il cammino chiuso $f_1: I \to S^1: t \mapsto e^{2\pi i t}$, si ha che
+    \[
+        \Phi\left([f_1^n]\right) = n \tilde{f}_1(1) = n.
+    \]
+    Infine, si verifica che il nucleo di $\Phi$ \`e l'insieme dei cammini chiusi omotopi al cammino costante in $1$, dato che
+    se $f: I \to S^1$ \`e un cammino chiuso tale che $\tilde{f}(1) = 0$, si ha che $\tilde{f}$ \`e un cammino chiuso in $\R$ che parte da $0$ e torna a $0$, quindi
+    poich\'e $\R$ \`e semplicemente connesso, esiste un'omotopia $H: I \times I \to \R$ da $\tilde{f}$ al camminio costante in $0$.
+    Ma a questo punto si ha che $\rho \circ H$ è un'omotopia da $f$ al cammino costante in $1$, quindi $f$ è omotopo al cammino costante in $1$.
+\end{proof}
+
+\begin{proof} (del teorema) \nl
+    \begin{enumerate}
+        \item si consideri il ricoprimento di aperti di $S^1$ dato da due aperti $U_0, U_1$, archi che si intersecano in due componenti 
+        connesse per archi di $S^1$, una che contiene $1$ e l'altra che contiene $-1$. 
+        \nl
+        DISEGNO DA FARE
+        \nl
+        \nl
+
+
+    \end{enumerate}
+\end{proof}
+
+
 
 \section{Rivestimenti}
 
