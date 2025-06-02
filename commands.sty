@@ -9,7 +9,7 @@
 \newcommand{\C}{\mathbb{C}} % Complex numbers
 \newcommand{\N}{\mathbb{N}} % Natural numbers
 
-% Topology-specific commands
+% Algebra-specific commands
 \newcommand{\Hom}{\mathrm{Hom}} % Homomorphisms
 \newcommand{\Ker}{\mathrm{Ker}} % Kernel
 \newcommand{\Img}{\mathrm{Im}}  % Image
@@ -19,16 +19,26 @@
 \newcommand{\set}[1]{\left\{ #1 \right\}} % Set notation
 \newcommand{\abs}[1]{\left| #1 \right|}   % Absolute value
 \newcommand{\norm}[1]{\left\| #1 \right\|} % Norm
+\newcommand{\card}[1]{\Bigm| #1 \bigM|} % Cardinality
 
 % Arrows
 \newcommand{\toiso}{\xrightarrow{\sim}} % Isomorphism arrow
 \newcommand{\into}{\hookrightarrow}    % Injection arrow
 \newcommand{\onto}{\twoheadrightarrow} % Surjection arrow
+\newcommand{\subgroup}{\leq}
+\newcommand{\normal}{\trianglelefteq}
+\newcommand{\Aut}[1]{\mathrm{Aut}\left(#1\right)} % Automorphism group
 
-% Proof symbols
+% Proof 
+\newcommand{\tc}{\text{ tale che }} % Such that
 \newcommand{\contradiction}{\textbf{Vorrei metterci il fulmine}} % For contradiction proofs
 
-% Theorems and definitions
+% General topology
+\newcommand{\interior}[1]{\mathring{#1}} % Parte interna
+\newcommand{\closure}[1]{\overline{#1}}  % Chiusura
+\newcommand{\boundary}[1]{\partial #1} % Bordo
+\newcommand{\Proj}[2]{\mathbb{P}^{#2}\left(#1\right)}
+
 % Theorems and definitions
 \newtheorem{definition}{Definizione}[section]
 \newtheorem{proposition}{Proposizione}[section]
@@ -45,6 +55,8 @@
 % Topological spaces
 \newcommand{\Sph}[1]{S^{#1}}
 \newcommand{\Disc}[1]{D^{#1}}
+\newcommand{\Torus}[1]{T^{#1}}
+\newcommand{\gTorus}[1]{T^{2}_{#1}}
 
 % Metric spaces objects
 \newcommand{\ball}[2]{B\left(#1, #2\right)}

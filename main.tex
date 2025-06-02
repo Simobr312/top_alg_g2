@@ -854,6 +854,462 @@ Il teorema di Van-Kampen necessit\`a di un richiamo di teoria dei gruppi, che no
     \]
 \end{proposition}
 
+\begin{proposition} [Prodotto amalgamato di gruppi nel caso in cui uno dei fattori \`e banale] \nl
+    
+\end{proposition}
+
+\begin{proposition} [Van-Kampen visto come prodotto amalgamato di gruppi ] \nl
+    
+\end{proposition}
+
+\subsection{Applicazioni ed esempi}
+
+\begin{enumerate}
+    \item Calcolo del gruppo fondamentale del disco senza due punti:
+            \[  
+                \Disc{2} \setminus \set{x_0, x_1}
+            \]
+        Si scrive $\Disc{2}  \setminus \set{x_1, x_2} = X_1 \cap X_2$, dove $X_1, X_2$ sono due aperti di $\Disc{2}$ e
+        l'intersezione $X_1 \cap X_2$ \`e semplicemente connessa. \nl
+        Inoltre $X_i \cong \Disc{2} \setminus \set{x_i}$ per $i = 1, 2$ e quindi
+        \[
+            \pi_1\left(X_i, x_i\right) \cong \Z
+        \]
+        Quindi se $x_0 \in X_1 \cap X_2$, usando la versione debole del teorema di Seifert-van Kampen si ha che
+        \[
+            \pi_1\left(\Disc{2} \setminus \set{x_1, x_2}, x_0\right) = \pi_1\left(X_1, x_0\right) * \pi_1\left(X_2, x_0\right) = \Z * \Z = F_2
+        \]
+        \item Calcolo del gruppo fondamentale del bouquet di due cerchio: \nl
+        \begin{definition} [Bouquet di due spazi topologici] \nl
+            Siano $X, Y$ due spazi topologici, $x_0 \in X, y_0 \in Y$ due punti. \nl
+            Si definisce il \textbf{bouquet di $\left(X, x_0)\right)$ e $\left(Y, y_0)\right)$} lo spazio topologico:
+            \[  
+                \left(X, x_0)\right) \vee \left(Y, y_0)\right) := \left(X \sqcup Y\right) / \set{x_0, y_0}
+            \]
+        \end{definition}
+
+        Sia quindi $X = \Sph{1} \vee \Sph{1}$ il bouquet di due cerchi. \nl
+        Dato un punto $x_1$ nel primo cerchio ed un punto $x_2$ nel secondo cerchio, si scrive $X = X_1 \cup X_2$
+        dove $X_1 = X \setminus {x_2}$ e $X_2 = X \setminus {x_1}$ sono due aperti di $X$.
+        Si ha che $X_1 \cap X_2$ \`e semplicemente connesso, quindi si pu\`o applicare la versione debole del teorema di Seifert-van Kampen.
+        \[
+            \pi_1\left(X, x_0\right) = \pi_1\left(X_1, x_0\right) * \pi_1\left(X_2, x_0\right) = \Z * \Z = F_2
+        \]
+        \item Iterando gli argomenti sopracitati si pu\`o dimostrare che il gruppo fondamentale del disco senza $n$ punti \`e
+        $F_n$ e il gruppo fondamentale del bouquet di $n$ cerchi \`e $F_n$.
+\end{enumerate}
+
+\begin{definition} [Grafo finito] \nl
+    Uno spazio di \textbf{Hausdorff} $X$ si dice grafo finito se: \nl
+    $\exists X_0 \subset X$ sottospazio finito e discreto tale che $X \setminus X_0$ \`e
+    unione disgiunta di un numero finito di aperti $e_1, e_2, \ldots, e_n$ tali che: \nl
+    Ogni $e_i$ \`e omeomorfo a un intervallo aperto $(0, 1)$ e $\abs{\bar{e_i} \setminus e_i} \leq 2$ \nl
+    Inoltre deve valere che: \nl
+    se $\abs{\bar{e_i} \setminus e_i} = 2$ allora
+        \[ 
+            \left(\bar{e_i}, e_i\right) \cong \left([0,1], (0,1)\right)
+        \]
+    in tale caso si dice che $e_i$ \`e un \textbf{arco} del grafo. \nl
+    se $\abs{\bar{e_i} \setminus e_i} = 1$ allora
+        \[
+            \left(\bar{e_i}, e_i\right) \cong \left(\Sph{1}, \Sph{1} \setminus \set{pt.}\right)
+        \]
+    In tal caso si dice che $e_i$ \`e un \textbf{ciclo} del grafo. \nl
+    L'insieme $X_0$ \`e detto \textbf{insieme dei vertici} del grafo. \nl
+    Un grafo si dice \textbf{albero} se \`e conesso e non contiene cicli.
+\end{definition}
+
+\begin{theorem} [Gruppo fondamentale di un grafo finito] \nl
+    Sia $X$ un grafo finito, allora il gruppo fondamentale $\pi_1(X, x_0)$ \`e un gruppo libero e finitamente generato
+    \[
+        \pi_1(X, x_0) \cong F_n
+    \]
+    dove $n$ \`e il numero di cicli del grafo.
+\end{theorem}
+
+\begin{lemma} \nl
+    Gli alberi sono contraibili ad un punto, quindi sono semplicemente connessi.
+\end{lemma}
+
+\begin{proof} \nl
+    Se $X$ \`e un albero, esiste un vertice $x_0 \in X_0$ tale che \`e connesso ad un solo altro vertice,
+    altrimenti $X$ conterrebbe un ciclo, sia $e_0$ un tale arco. \nl
+    $X$ si retrae per deformazione su $X \setminus \left(e_0 \cup \set{x_0}\right)$, che \`e un grafo finito con un vertice in meno. \nl
+    Per induzione su $n = \abs{X_0}$, $X$ \`e contraibile ad un punto.
+\end{proof}
+
+\begin{lemma} [Esistenza dello "spanning tree" di un grafo]
+    Ogni grafo finito $X$ contiene un sottografo $Y \subset X$ che \`e un albero
+    e ha gli stessi vertici di $X$, cio\`e $Y_0 = X_0$.
+\end{lemma}
+
+\begin{proof} \nl
+    Per induzione su $n = \abs{X_0}$, se $n = 1$ allora $Y = X$ \`e un albero. \nl
+    Per il passo passo si scegla un vertice a caso $x_0 \in X_0$ e si considera il grafo
+    $Z$ ottenuto da $X$ rimuovendo $x_0$ ed ogni arco che lo contenga. \nl
+    Le componenti connesse di $Z$ hanno numero di vertici strettamente inferiore ad $n$ e quindi
+    per ipotesi induttiva ammettono uno spanning tree. \nl
+    Lo spanning tree di $X$ si ottiene riunendo gli spanning tree delle componenti connesse di $Z$ aggiungendo $x_0$ e gli archi rimossi in precedenza.
+\end{proof}
+
+\begin{proof} [del teorema] \nl
+    Dato $X$ un grafo, consideriamo il suo spanning tree $Y$ che esiste per il secondo lemma.
+    Per il secondo lemma, lo spazio ottenuto contraendo $Y$ ad un punto $y_0 \in Y_0$ \`e un bouquet
+    di $n$ cerchi, dove $n$ \`e il numero di cicli di $X$. \nl
+    Si ha quindi che il gruppo fondamentale di $X$ \`e isomorfo al gruppo fondamentale del bouquet di $n$ cerchi, che \`e il gruppo libero su $n$ generatori.
+\end{proof}
+
+\subsection{Gruppi fondamentali di superfici topologiche compatte}
+
+\begin{proposition} [Gruppo fondamentale del prodotto di spazi] \nl
+
+\end{proposition}
+
+\begin{proposition} [Gruppo fondamentale del toro] \nl
+    Il gruppo fondamentale del toro \`e isomorfo al prodotto diretto di due gruppi ciclici:
+    \[
+        \pi_1\left(\Torus{2}, x_0\right) \cong \Z \times \Z
+    \]
+\end{proposition}
+
+\begin{proof} \nl
+    La dimostrazione seguirebbe in maniera ovvia dalla proposizione precedente, per\`o se ne da una dimostrazione
+    alternativa pi\`u difficile ma pi\`u interessante. \nl
+    Si considera il quadrato $Q = [0,1] \times [0,1]$ e si vede un toro come il quoziente di $Q$ per la relazione di equivalenza
+    che identifica di tutti i lati opposti. \nl
+    Siano $y \in Q$ il centro del quadrato, $U = Q \setminus \set{y}$ e infine data la proiezione al quoziente
+    $\pi: Q \to \Torus{2}$, si consideri $V = \pi\left(\interior{Q}\right)$. \nl
+    Dall'identificazione dei lati opposti segue che $V$ \`e omeomorfo a $\Torus{2} \setminus (\Sph{1} \vee \Sph{1})$. \nl
+    Dato $x_0 \in U$ e $x_1 \in U \cap V$, si possono ora calcolare $\pi_1(U, x_0), \pi_1(V, x_1)$ e $\pi_1(U \cap V, x_1)$: \nl
+    \begin{itemize}
+        \item Il quadrato senza il centro $U = Q \setminus \set{y}$ si retrae per deformazione sul bordo $\boundary{Q}$. \nl
+        Le retrazioni per deformazione passano al quoziente e quindi $U$ \`e omotopicamente equivalente a $\pi(\boundary{Q}) \cong \Sph{1} \vee \Sph{1}$. \nl
+        \item $V$ \`e l'immagine tramite la proiezione al quoziente di $\interior{Q}$, che \`e semplicemente connessa, dunque \`e semplicemente connesso. \nl
+        \item $U \cap V$ \'e omeomorfo a $\Disc{2} \setminus \set{0}$ e dunque $\pi_1(U \cap V, x_1) \cong \Z$.
+    \end{itemize}
+    A questo punto si pu\`o applicare il teorema di Seifert-van Kampen nel caso in cui uno dei due fattori \`e banale,
+    dato che $\pi_1(V) \cong {1}$, e quindi si ha che
+    \[
+        \pi_1\left(\Torus{2}, x_1\right) = \pi_1\left(U,x_1\right) / N,
+    \]
+    dove $N$ \`e il sottogruppo normale generato dall'immagine $i_*(\pi_1(U \cap V))$ dove 
+    $i: U \cap V \into U$ \`e l'inclusione naturale. \nl
+    Il gruppo fondamentale $\pi_1(U, x_0)$ \`e generato da due generatori $a, b$ che corrispondono alle classi di omotopia dei lacci che girano intorno ai cerchi. \nl
+    Quindi se $f: I \to U$ \`e il cammino che collega $x_0$ ad $x_1$ vale che il gruppo fondamentale $\pi_1(U, x_1)$ \`e generato
+    da $\tau_f(a)$ e $\tau_f(b)$. \nl
+    D'altra parte $\pi_1(U \cap V, x_1)$ \`e generato da un laccio $c$ che gira intorno ad $y$ il centro del quadrato. \nl
+    Deformando $c$ sul bordo e passando poi al quoziente, si ha che
+    \[
+        c \sim \tau_f(a*b*a^{-1}*b^{-1}).
+    \]
+    Si ha quindi che l'immagine $i_*(\pi_1(U \cap V))$ \`e generata da $a*b*a^{-1}*b^{-1}$, si conclude quindi Che
+    \[
+        \pi_1(\Torus{2}, x_1) = \left< a, b \mid [a,b]\right> \cong \Z \times \Z,
+    \]
+    dove $[a,b] = a*b*a^{-1}*b^{-1}$ \`e il commutatore.
+\end{proof}
+
+\begin{proposition} [Gruppo fondamentale del toro con due buchi] \nl
+    Si indicher\`a con $\gTorus{2}$ la superficie simile al toro, per\`o con 2 buchi, cio\`e una doppia ciambella.
+    \[
+        \pi_1(\gTorus{2}) = \left< a_1, b_1, a_2, b_2 \mid [a_1, b_1][a_2, b_2]\right>
+    \]
+\end{proposition}
+
+\begin{proof} \nl
+    Il toro con due buchi $T = \gTorus{2}$, si pu\`o identificare con la somma connessa
+    \[
+        T = T_1 \# T_2,
+    \]
+    dove $T_1, T_2$ sono due tori $\Torus{2}$, ottenuta incollando i due tori su dei dischi $\Disc{2}$ presi su ciascuno dei due tori. \nl
+    Come si pu\`o ottenere questa costruzione come quoziente? \nl
+    Si prendono due copie di $Q$. Si identificano tra di loro i lati opposti ai vertici di ciascun quadrato e
+    per identificare i dischi detti prima, si considerano due lacci $c_1, c_2$ che partono da uno dei vertici di ciascun quadrato e si identificano tra loro. \nl
+    In sostanza i due quadrati diventano due pentagoni, con due coppie di lati opposti identificate tra loro, ed con il lato $c_1$ di uno identificato con il lato $c_2$ dell'altro. \nl
+    Perci\`o incollando $c_1$ e $c_2$ si ottiene un ottagono $O$ i cui lati alterni sono identificati con direzione opposta. \nl
+    Conoscendo la costruzione di $T$ come quoziente, si pu\`o calcolare il suo gruppo fondamentale come nel caso di $\Torus{2}$. \nl
+    Si consideri $U = T \setminus \set{y}$ e $V = i_*(\interior{O})$ \nl
+    $U$ \`e omotopicamente equivalente al bouqet di 4 cerchi dunque $\pi_1(U) \cong F_4$, mentre $V$ \`e semplicemente connesso.
+    $U \cap V \equiv \Disc{2} \setminus {0}$ e dunque $\pi_1(U \cap V) \cong \Z$ ed il generatore \`e
+    \[
+        [a_1, b_1][a_2, b_2]
+    \]
+    Quindi si conclude la tesi usando Van Kampen nel caso in cui uno dei fattori \`e semplicemente connesso.
+\end{proof}
+
+\begin{proposition} [Gruppo fondamentale di un $g$-Toro] \nl
+    Un toro con $g$ si pu\`o vedere come somma connessa $T_1 \# T_2 \# \dots T_g$ di $g$ tori, quindi in maniera analoga al caso precedente
+    si pu\`o vedere come quozietne di un ($2g$-gon) $O$ con la giusta identificazione. \nl
+    Quindi il gruppo fondamentale di un toro con $g$ buchi \`e dato da:
+    \[
+        \pi_1(\gTorus{g}) = \left< a_1, b_1, a_2, b_2, \ldots, a_g, b_g \mid [a_1, b_1][a_2, b_2] \ldots [a_g, b_g]\right>
+    \]
+\end{proposition}
+
+\begin{proposition} [Gruppo fondamentale del piano proiettivo reale] \nl
+    Il gruppo fondamentale del piano proiettivo reale \`e isomorfo al gruppo ciclico di ordine 2:
+    \[
+        \pi_1(\Proj{\R}{2}, x_0) = \left< a \mid a^2 \right> \cong \Z / 2\Z
+    \]
+    e inoltre la somma connessa di $g$ piani proiettivi ha come gruppo fondamentale:
+    \[
+        \pi_1(\Proj{\R}{2} \# \Proj{\R}{2} \# \dots \Proj{\R}{2}) = \left< a_1, a_2, \dots a_g \mid a_1^2a_2^2 \dots a_g^2\right>
+    \]
+\end{proposition}
+
+\begin{proof}
+    Da fare per esercizio
+\end{proof}
+
+\begin{definition} [Superficie topologica] \nl
+    Una superficie topologica \`e uno spazio di Hausdorff connesso $X$ che \`e compatto che ammette un ricoprimento
+    $\set{U_i}_{i \in I}$ di aperti $U_i$ tali che $U_i \cong D^2 \quad \forall i$.
+\end{definition}
+
+\begin{theorem} (Classificazione delle superfici topologiche) \nl
+    Le classi di omeomorfismo delle superfici topologiche sono date da:
+    \begin{enumerate}
+        \item La sfera $\Sph{2}$.
+        \item I $g$-tori $\gTorus{g}$, cio\`e le superfici ottenute come somma connessa di tori.
+        \item Le somme connesse di $g$ piani proiettivi reali $\Proj{\R}{2} \# \Proj{\R}{2} \# \dots \Proj{\R}{2}$.
+    \end{enumerate}
+    
+\end{theorem}
+
 \section{Rivestimenti}
+\subsection{Definizioni ed esempi}
+
+\begin{remark} [Le componenti connesse di uno spazio localmente connesso]
+    Se $X$ \`e uno spazio topologico localmente connesso, allora le sue componenti connesse sono aperte e chiuse.
+\end{remark}
+
+\begin{proof}
+    Da scrivere, dovrebbe essere facile. \nl
+\end{proof}
+
+Tutti gli spazi topologici saranno supposti localmente connessi per archi, e dunque localmente connessi. \nl
+Dunque per l'osservazione precedente le componenti connesse saranno sempre aperte.
+
+\begin{definition} [Rivestimento] \nl
+    Dato uno spazio topologico $X$, un rivestimento per $X$ \`e una coppia $\left(Y, p\right)$, dove
+    $Y$ \`e uno spazio topologico e $p: Y \to X$ \`e una mappa continua tale che: \nl
+    $\forall x \in X \quad \exists U_x$ intorno di $x$ aperto detto \textbf{intorno ben rivestito di $x$} tale che 
+    \[p^{-1}(U_x) = \bigsqcup_{i \in I} U_i,\]
+    e $p_{\big| U_i}: U_i \to U_x$ \`e un omeomorfismo $\forall i \in I$. \nl
+\end{definition}
+
+\begin{remark}
+    Un rivestimento \`e sempre un'applicazione aperta e omeomorfismo locale.
+\end{remark}
+
+\begin{example} [Rivestimento banale] \nl
+    Sia $X$ uno spazio topologico e $F$ uno spazio topologico discreto, allora $Y = X \times F \cong \bigsqcup_{f \in F} X$ e la mappa $p: Y \to X$ di proiezione sulla prima coordinata
+    \`e un rivestimento di $X$ detto rivestimento banale.
+\end{example}
+
+\begin{example} [Nastro di Moebius] \nl
+    Sia $M$ il nastro di Moebius, e $\boundary{M}$ il suo bordo, la proiezione $p: \boundary{M} \to \Sph{1}$ data dalla proiezione
+    del bordo sull $\Sph{1}$ centrale del nastro \`e un rivestimento di $\Sph{1}$. \nl
+    Un tale rivestimento non \`e banale perch\'e $M \not\cong \Sph{1} \sqcup \Sph{1}$.
+\end{example}
+
+\begin{example} [Mappa esponenziale] \nl
+    La mappa $p: \R \to \Sph{1} \subset \C: t \mapsto e^{2 \pi i t}$ \`e un rivestimento.
+\end{example}
+
+\begin{example} [Rivestimento di $\Sph{n}$ in se stesso] \nl
+    Se $n \neq 1$ la mappa $p: \Sph{n} \to \Sph{n}: e^{2 \pi \theta} \mapsto e^{2 \pi n \theta}$ \`e un rivesitmento
+    di $\Sph{n}$ dove $\forall x \in \Sph{n}$ si ha che $\abs{p^{-1}(x)} = n$. 
+\end{example}
+
+\begin{example} [Rivestimento di $\C \setminus \set{0}$] \nl
+    La mappa $p: \C \setminus \set{0} \to \C \setminus \set{0}: z \mapsto z^n$ \`e un rivestimento di $\C \setminus \set{0}$.
+    Mentre la mappa $\C \to \C: z \mapsto z^n$ non lo \`e.
+\end{example}
+
+\begin{proposition} [Operazioni sui rivestimenti] \nl
+    \begin{enumerate}
+        \item Sia $p: Y \to X$ un rivestimento e $U \subset X$ un aperto. \nl
+        La mappa $p_{\big| p^{-1}(U)}: p^{-1}(U) \to U$ \`e un rivestimento di $U$.
+        \item Se $X$ \`e connesso e $Z \subset Y$ \`e una qualunque componente connessa di $Y$, allora 
+        la mappa $p_{\big| Z}: Z \to X$ \`e un rivestimento di $X$. \nl
+        Infatti, se $U \subset X$ \`e un intorno ben ben rivestito per $p$, allora vale che
+        \[
+            p^{-1}(U_x) = \bigsqcup_{i \in I} U_i,
+        \]
+        per connessione di $Z$ vale per\`o che $U_i \subset Z$ oppure $U_i \cap Z = \empty.$ \nl
+        Inoltre $p(Z) = X$, sia infatti $x' \not\in p(Z)$, dato $U'$ l'intorno ben rivestito di $x'$ e
+        gli $U'_i$ tali che $p^{-1}(U_i) = \bigsqcup_{i \in I} U'_i$, dato che che $U_i \not\subset Z$ vale che
+        $U_i \cap Z = \empty $ per ogni $i$. (da controllare)
+        \item Siano $p_1: Y_1 \to X_1, p_2: Y_2 \to X_2$ due rivestimenti rispettivamente di $X_1$ e $X_2$. Allora la mappa
+        \[  
+            \left(p_1, p_2\right): Y_1 \times Y_2 \to X_1 \times X_2: (y_1, y_2) \to (p_1(y_1), p_2(y_2))
+        \]
+        \`e un rivestimento di $X_1 \times X_2$. \nl
+        Ad esempio $\R^2 \to T = \Sph{1} \times \Sph{1}$ \`e un rivestimento del toro.
+
+    \end{enumerate}
+\end{proposition}
+
+\subsection{Morfismi di rivestimenti}
+
+\begin{definition} [Morfismo di rivestimenti] \nl
+    Un \textbf{morfismo di rivestimenti} \`e il dato di due rivestimenti $pi_1: Y_1 \to X, p_2: Y_2 \to X$
+    ed una mappa continua $\varphi: Y_1 \to Y_2$ tale che
+    \[
+        p_2 \circ \varphi = p_1
+    \]
+    ovvero il seguente diagramma commuta:
+    \[\begin{tikzcd}
+	{Y_1} && {Y_2} \\
+	& X
+	\arrow["\varphi", from=1-1, to=1-3]
+	\arrow["{p_1}", from=1-1, to=2-2]
+	\arrow["{p_2}"', from=1-3, to=2-2]
+    \end{tikzcd}\]
+\end{definition}
+
+\begin{definition} [Isomorfismo di rivestimenti] \nl
+    Se $\varphi: Y_1 \to Y_2$ \`e un morifmso di rivestimenti come sopra tale che esiste un altro morfismo
+    di rivestimenti $\psi: Y_2 \to Y_1$ tale che $\psi \circ \varphi = id_{Y_1}$ e $\varphi \circ \psi = id_{Y_2}$
+    si dice che $\varphi$ \`e un isomorifsmo tra i rivestimenti $pi_1: Y_1 \to X, p_2: Y_2 \to X$.
+\end{definition}
+
+\begin{definition} [Morfismi tra mappe continue] \nl
+    La stesse definizioni date sopra si possono dare nel caso generale in cui $p_1, p_2$ sono generiche mappe continue.
+\end{definition}
+
+\begin{proposition} [Caratterizzazione dei rivestimenti] \nl
+    Sia $p: Y \to X$ una mappa continua surgettiva. \nl
+    \[
+        p \text{ \`e un rivestimento} \iff \forall x \in X \quad \exists U \tc p_{|p^{-1}(U)}: p^{-1}(U) \to U \text{ \`e isomorfo ad un rivestimento banale}
+    \]
+\end{proposition}
+
+\begin{proof} \nl
+    $(\Leftarrow)$ Dovrebbe essere facile, ma \`e da scrivere. \nl
+    $(\Rightarrow)$ Se $p^{-1}(U) = \bigsqcup_{i \in I} U_i$, si pu\`o munire $I$ della topologia discreta
+    e in questo modo $p^{-1}(U) \cong I \times U$ e la mappa $\varphi: Y \to I \times U: y \mapsto (i, p(y))$ se $y \in U_i$ \`e un omeomorfismo e dunque un isomorifsmo tra i due rivestimenti.
+\end{proof}
+
+\begin{corollary} [Fibre di un rivestimento] \nl
+    Se $X$ \`e uno spazio topologico connesso e $p: Y \to X$ \`e un rivestimento, allora tutte le fibre hanno la stessa cardinalit\`a. \nl
+    Cio\`e \[
+        \forall x,y \in X \quad \abs{p^{-1}(x)} = \abs{p^{-1}(y)}.
+    \]
+\end{corollary}
+
+\begin{definition} [Grado di un rivestimento] \nl
+    Il corollario precedente permette di definire il \textbf{grado} di un rivestimento $p: Y \to X$ come la cardinalit\`a di una qualunque delle fibre di $p$.
+\end{definition}
+
+\begin{proof}
+    Mostriamo che per ogni $\alpha$ "cardinale" l'insieme $X_{\alpha} = \set{x \in X \mid \abs{p^{-1}(x)} = \alpha}$ \`e sia aperto che chiuso. \nl
+
+    Da finire.
+\end{proof}
+
+\begin{definition} [Azione propriamente discontinua] \nl
+    Si dice che un gruppo $G$ agisce in maniera propriamente discontinua su uno spazio topologico $Y$ se
+    ogni punto $y \in Y$ ammette un intorno $U_y$ tale che $\forall g,h \in G \quad g.U \cap h.U = \emptyset$ se $g \neq h$.
+\end{definition}
+
+\begin{proposition} [Rivestimenti dati da azioni propriamente discontinue] \nl
+    Sia $Y$ uno spazio topologico e $G$ un gruppo che agisce in maniera propriamente discontinua su $Y$.
+    Allora la mappa $p: Y \to Y/G$ data dalla proiezione di $Y$ su $Y/G$ \`e un rivestimento di $Y/G$.
+    Inoltre gli intorni ben rivestiti di ogni punto $x \in Y/G$ sono dati dall'immagine degli intorni che rendono l'azione propriamente discontinua.
+\end{proposition}
+
+\begin{proof} \nl
+    Chiaramente la proiezione al quoziente \`e sempre surgettiva ed \`e continua per definizione della topologia quoziente. \nl
+    Per ogni punto $x \in Y$ sia $U$ l'intorno che rende propriamente discontinua l'azione, allora vale
+    \[
+        p^{-1}(p_g(U)) = \bigsqcup_{g \in G} g.U,
+    \]
+\end{proof}
+
+\begin{example} \nl
+    Si consider l'azione propriamente discontinua di $\Z$ su $\R$ data da $n . x = x + n$, allora la mappa
+    \[
+        p: \R \to \R / \Z \cong \Sph{1}: x \mapsto x + \Z
+    \]
+    \`e un rivestimento che possiamo identificare come il rivestimento $t \to e^{2 n \pi i t}$ di $\Sph{1}$ visto in precedenza.
+\end{example}
+
+\begin{example} \nl
+    Il rivestimento $\R^2 \to T = \Sph{1} \times \Sph{1}$ pu\`o essere visto come il rivestimento indotto
+    dall'azione propriamente discontinua di $\Z^2$ su $\R^2$ data da $(m, n) . (x, y) = (x + m, y + n)$.
+\end{example}
+
+\begin{example} \nl
+    Anche il rivestimento $\C \setminus \set{0} \to \C \setminus \set{0}$ visto in precedenza pu\`o essere visto come il rivestimento indotto dall'azione propriamente discontinua
+     del gruppo ciclico di $n$ elementi $\set{\zeta_n \in \C \mid \zeta_n^n =1}$ su $\C \setminus \set{0}$ data da
+     \[
+        \zeta_n. z = \zeta_n z
+     \]
+\end{example}
+
+\begin{example} [Spazi proiettivo reale] \nl
+    Si considera l'azione propriamente discontinua di $\Z / 2\Z$ su $\Sph{n} = \set{x \in \R^n \mid \norm(x) = 1}$ data da
+    \[
+        \tau.x = -x \text{ se } \tau \text{ \`e l'elemento non banale di } \Z / 2\Z.
+    \]
+    Questa azione \`e propriamente discontinua e la proiezione al quoziente \`e un rivestimento $p: \Sph{n} \to \Proj{\R}{n}$.
+\end{example}
+
+\begin{example} [Rivestimento banale] \nl
+    Sia $G$ un gruppo topologico munito della topologia discreta, allora l'azione naturale di $G$ su $G \times X$
+    data da 
+    \[
+        g.\left(g',x\right) = \left(gg', x\right)
+    \]
+    e propriamente discontinua ed induce il rivestimento banale $G \times X \to X$. \nl
+    Inoltre per ogni sottogruppo normale $H \normal G$, la mappa $G \times X \to G/H \times X$ \`e ancora
+    un rivestimento banale.
+\end{example}
+
+\subsection{Teoria di Galois per rivestimenti}
+
+\begin{definition} [Automorfismo di rivestimenti] \nl
+    Un automorfismo del rivestimento $p: Y \to X$ \`e un isomorfismo di $p$ con se stesso, cio\`e
+    \[\begin{tikzcd}
+	{Y} && {Y} \\
+	& X
+	\arrow["\varphi", from=1-1, to=1-3]
+	\arrow["{p}", from=1-1, to=2-2]
+	\arrow["{p}"', from=1-3, to=2-2]
+    \end{tikzcd}\]
+    \`E facile verificare che l'insieme $\Aut{Y/X} := \set{\phi: Y \to Y \mid \phi \text{ automorfismi di p in se stesso}}$
+    forma un gruppo con l'operazione di composizione ed \`e detto \textbf{gruppo di automorfismi del rivestimento $Y/X$}.
+\end{definition}
+
+\begin{remark} \nl
+    Nel caso del rivestimento $Y \to Y/G$ dato dalla proiezione, la mappa 
+    \[
+        G \to \Aut{X/G}: g \mapsto \varphi_g(x \mapsto g.x)
+    \]
+    \`e un omomorfismo iniettivo $G \inj \Aut(X/G)$.
+\end{remark}
+
+\begin{proposition} \nl
+    Se $Y$ \`e connesso allora la mappa, come sopra
+    \[
+        G \to \Aut{X/G}: g \mapsto \varphi_g(x \mapsto g.x)
+    \]
+    \`e un isomorfismo tra $G$ e $Aut(X/G)$.
+\end{proposition}
+
+\begin{lemma} \nl
+    Sia $Y \to X$ un rivestimento connesso e $\varphi \in \Aut{Y/X}$, vale che
+    \[
+    \exists y \in Y \tc \varphi(y) = y \implies \phi = \id
+    \]
+    Cio\`e l'unico automorfismo di rivestimento che lascia fisso un punto \`e l'identit\`a. \nl
+    Quindi gli automorfismi di rivestimenti indotti da azioni propriamente discontinue non hanno punti fissi.
+\end{lemma}
+
+\
+
+
 
 \end{document}
