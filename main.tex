@@ -30,8 +30,8 @@
 
 \begin{document}
 
-\title{Appunti di Topologia Algebrica}
-\author{Simone Riccio}
+\title{Appunti di Topologia Algebrica del corso di Geometria 2}
+\author{Simone Riccio \\ \small{(dalle lezioni del Prof. Tamas Szamuely)}}
 \date{\today}
 
 \maketitle
@@ -983,7 +983,7 @@ Il teorema di Van-Kampen necessit\`a di un richiamo di teoria dei gruppi, che no
     Dato $x_0 \in U$ e $x_1 \in U \cap V$, si possono ora calcolare $\pi_1(U, x_0), \pi_1(V, x_1)$ e $\pi_1(U \cap V, x_1)$: \nl
     \begin{itemize}
         \item Il quadrato senza il centro $U = Q \setminus \set{y}$ si retrae per deformazione sul bordo $\boundary{Q}$. \nl
-        Le retrazioni per deformazione passano al quoziente e quindi $U$ \`e omotopicamente equivalente a $\pi(\boundary{Q}) \cong \Sph{1} \vee \Sph{1}$. \nl
+res        Le retrazioni per deformazione passano al quoziente e quindi $U$ \`e omotopicamente equivalente a $\pi(\boundary{Q}) \cong \Sph{1} \vee \Sph{1}$. \nl
         \item $V$ \`e l'immagine tramite la proiezione al quoziente di $\interior{Q}$, che \`e semplicemente connessa, dunque \`e semplicemente connesso. \nl
         \item $U \cap V$ \'e omeomorfo a $\Disc{2} \setminus \set{0}$ e dunque $\pi_1(U \cap V, x_1) \cong \Z$.
     \end{itemize}
@@ -1130,7 +1130,7 @@ Dunque per l'osservazione precedente le componenti connesse saranno sempre apert
 \begin{proposition} [Operazioni sui rivestimenti] \nl
     \begin{enumerate}
         \item Sia $p: Y \to X$ un rivestimento e $U \subset X$ un aperto. \nl
-        La mappa $p_{\big| p^{-1}(U)}: p^{-1}(U) \to U$ \`e un rivestimento di $U$.
+        La mappa $\restrict{p}{p^{-1}(U)}: p^{-1}(U) \to U$ \`e un rivestimento di $U$.
         \item Se $X$ \`e connesso e $Z \subset Y$ \`e una qualunque componente connessa di $Y$, allora 
         la mappa $p_{\big| Z}: Z \to X$ \`e un rivestimento di $X$. \nl
         Infatti, se $U \subset X$ \`e un intorno ben ben rivestito per $p$, allora vale che
@@ -1492,15 +1492,174 @@ Dunque per l'osservazione precedente le componenti connesse saranno sempre apert
     \]
 \end{lemma}
 
+\begin{definition} [Spazio localmente semplicemente connesso] \nl
+    Uno spazio topologico $X$ si dice localmente semplicemente connesso se ogni ogni punto ammette un sistemfa fondamentale
+    di intorni fatto di intorni semplicemente connessi.
+\end{definition}
+
 \begin{theorem} [Esistenza del rivestimento universale] \nl
     Sia $X$ spazio connesso e localmente semplicemente connesso, allora esiste $\tilde{X} \to X$ rivestimento universale di $X$.
 \end{theorem}
 
 \begin{proof}
-    Costruzione spastica.
+    2 costruzioni spastiche.
 \end{proof}
 
-\begin
+\subsection{Dimostrazione del teorema di Seifert-Van Kampen}
+
+\begin{lemma} \nl
+    Siano $p_1: Y_1 \to X_1$, $p_2: Y_2 \to X_2$ due rivestimenti e $\varphi: Y_1 \to Y_2$ un morfismo di rivestimenti, allora
+    \[
+        \exists p: Y \to X = x_1 \cup X_2 \text{ rivestimento tale che } \restrict{p}{p^{-1}(X_i)} \cong p_i^{-1}(X_i) \to X
+    \]
+    Inoltre se $p_1, p_2$ sono di Galois allora anche $p$ \`e di Galois.
+
+    % https://q.uiver.app/#q=WzAsMyxbMCwwLCJwXzFeey0xfVxcbGVmdChYXzEgXFxjYXAgWF8yXFxyaWdodCkiXSxbMiwwLCJwXzJeey0xfVxcbGVmdChYXzEgXFxjYXAgWF8yXFxyaWdodCkiXSxbMSwxLCJYXzEgXFxjYXAgWF8yIl0sWzAsMl0sWzEsMl0sWzAsMSwiXFx2YXJwaGkiXV0=
+    \[\begin{tikzcd}
+	{p_1^{-1}\left(X_1 \cap X_2\right)} && {p_2^{-1}\left(X_1 \cap X_2\right)} \\
+	& {X_1 \cap X_2}
+    \arrow["\varphi", "\cong"', from=1-1, to=1-3]
+	\arrow[from=1-1, to=2-2]
+	\arrow[from=1-3, to=2-2]
+    \end{tikzcd}\]
+\end{lemma}
+
+\begin{definition} [$G$-rivestimento] \nl
+    Un $G$-rivestimento \`e un rivestimento della forma $Y \to Y/G$ dove $G$ \`e un gruppo che agisce in
+    maniera propriamente discontinua su $Y$.
+\end{definition}
+
+\begin{theorem} \nl
+    La mappa $\varrho \mapsto Y_\varrho$ induce una bigezione:
+    % https://q.uiver.app/#q=WzAsMixbMCwwLCJcXHNldHtcXHZhcnJobzogXFxwaV8xKFgsIHhfMCkgXFx0byBHfSJdLFsyLDAsIlxcc2V0e1xcdGV4dHtHLXJpdmVzdGltZW50aSB9IHA6IFkgXFx0byBYIFxcbWlkIHkgPSBwXnstMX0oeF8wKSAgXFx0ZXh0eyBmaXNzYXRvfX0iXSxbMCwxLCIiLDAseyJzdHlsZSI6eyJ0YWlsIjp7Im5hbWUiOiJhcnJvd2hlYWQifX19XV0=
+    \[\begin{tikzcd}
+        {\set{\varrho: \pi_1(X, x_0) \to G}} && {\set{\text{G-rivestimenti } p: Y \to X \mid y = p^{-1}(x_0)  \text{ fissato}}}
+        \arrow[tail reversed, from=1-1, to=1-3]
+    \end{tikzcd}\]
+    con i rivestimenti a meno di isomorfismo.
+\end{theorem}
+
+\section{Domande orali del 3 Giugno}
+
+\subsection{Orale 1}
+\begin{enumerate}
+    \item Come si dimostra che il prodotto di 2 compatti \`e compatto? 
+    \item Perch\'e i compatti di $\R$ sono chiusi?
+           \begin{answer}
+            \`E T2
+           \end{answer} 
+    \item Esempio di compatto di $\R$ che non \`e unione finita di intervalli chiusi e limitati.  
+        \begin{answer}
+            L'insieme di Cantor
+        \end{answer}
+    \item Se $X$ e $Y$ sono compatti e discreti, cosa si pu\`o dire? (TAMAS)
+        \begin{answer}
+            $X, Y$ sono finiti, quindi il prodotto di finiti \`e finito hahaha.
+        \end{answer}
+    \item Esempio di un compatto non discreto
+        \begin{answer}
+            Un intervallo chiuso.
+        \end{answer}
+\end{enumerate}
+
+\subsection{Orale 2}
+\begin{enumerate}
+    \item Che relazione ci sono tra chiuso e compatto
+        \begin{answer}
+            Chiuso in un compatto \`e compatto.
+        \end{answer}
+    \item Quand'\`e che i sottoinsiemi compatti di $X$ sono chiusi? E se vuole mi dia un controesempio
+        di un compatto non chiuso.
+        \begin{answer}
+            Se $X$ \`e T2 i compatti sono chiusi, il controesempio \`e un qualunque spazio con la topologia indiscreta.
+        \end{answer}
+    \item Sia $p: Y \to X$ un rivestimento e $U \subset X$ aperto, come si definisce la restrizione
+        del rivestimento $p$ ad $U$? Dimostrare che tale restizione \`e ancora un rivestimento. (TAMAS)
+        \begin{answer}
+            $\restrict{p}{p^{-1}(U)}: p^{-1}(U) \to U$
+        \end{answer}
+    \item $X,Y$ e $U$ connessi come sopra. Quando $p^{-1}(U)$ \`e sconnesso? Dopo un po' hanno chiesto, qual \`e il rivestimento
+        connesso pi\`u semplice che uno possa pensare? (TAMAS)
+        \begin{answer}
+            Alla prima domanda non si \`e saputo rispondere. \nl
+            Alla seconda domanda $Y = X$ con $p = id_X$ che \`e un caso di omeomorfismo.
+        \end{answer}
+\end{enumerate}
+
+\subsection{Orale 3}
+\begin{enumerate}
+    \item Com'\`e definito $\Proj{\C}{1}$? Munito della topologia quoziente a quale spazio \`e omeomorfo?
+        \begin{answer}
+            Alla sfera $\Sph{1}$, la dimostrazione si pu\`o fare con l'unicit\`a della compattificazione di Alexandroff perch\'e i due spazi sono $T2$ e compatti.
+        \end{answer} 
+    \item Chi \`e il piano all'infinito di $\Proj{\C}{1}$
+        \begin{answer}
+            Il punto proiettivo $[0,1]$
+        \end{answer}
+    \item Esercizio: Verifica che le carte affini sono omeomorfismi.
+    \item Cos'\`e una conica in $\Proj{\C}{1}$? Quante coniche non degeneri esistono in $\Proj{\C}{1}$? E quante in $\Proj{\R}{1}$?
+    \item Come si trova la tangente ad una conica passante per un punto?
+\end{enumerate}
+
+\subsection{Orale 4}
+\begin{enumerate}
+    \item Data una funzione $f: \C \to \C$ olomorfa tale che $\abs{f(z)} \leq c_1\abs{z} + c_2$ con $c_1,c_2 \in \R$ costanti.
+        Cerchi una caratterizzazione di $f$.
+        \begin{answer}
+            I polinomi di grafo minore o uguale a $d$. Dimostrazione molto simile al Teorema di Louville.
+        \end{answer}
+    \item \`E vero che $f$ come sopra(quindi un polinomio) definisce un rivestimento $\C \to \C$? Per esempio $z \mapsto z^n$ \`e un rivestimento da $\C \to \C$? (Tamas)
+        \begin{answer}
+            Non pu\`o essere un rivestimento perch\'e $f^{-1}(0)$ per il toerema fondamentale di gruppo. \nl
+            Tuttavia la mappa $\varrho: \C \setminus \set{0} \to \C \setminus \set{0}: z \mapsto z^n$ da un rivestimento
+            indotto dall'azione propriamente discontinua di $\Z / n\Z$ su $\C^*$ data da $[m].(\rho e^{\theta i}) := \rho e^{\left(\theta+ m\frac{2 \pi}{n}\right)i}$. nl
+            Oppure come ha risposto lui: $[m].z \to z \zeta_n^m$ dove $\zeta_n \in \C$ \`e una radice $n$ primitiva dell'unit\`a.
+        \end{answer}
+\end{enumerate}
+
+\subsection{Orale 5}
+\begin{enumerate}
+    \item Esempio di un rivestimento di Galois e di un rivestimento non di Galois. Un esempio generale di rivestimento di Galois. (Tamas)
+    \begin{answer}
+        $\R \to \R / \Z$ \`e di Galois ed in generale $G$ che agisce p.d. su $\tilde{X}$ semplicemente connesso da un rivestimento $\tilde{X} \to \tilde{X} / G$ di Galois. \nl
+        L'esempio non di Galois \`e quello visto a lezione.
+    \end{answer}
+    \item Qual \`e il gruppo fondamentale del bouquet $\Sph{1} \vee \Sph{1}$, perch\'e si poteva prevedere teoricamente? (Tamas)
+    \begin{answer}
+        Per il toerema di Corrispondenza di Galois esiste perch\'e ci sono sottogruppi non normali in $\Z * \Z$.
+    \end{answer}
+    \item Qual \`e la forma normale di una funzione $f$ memorofa con zero $z_0$ di ordine $k$? Calcoli il residuo di $h(z) = \frac{f'}{f}$ in $z_0$
+    \begin{answer}
+        $f(z) = (z - z_0)^k g(z)$, con $g(z) \neq 0$ olomorfa. \nl
+        Se $z_0$ \`e uno zero di ordine $k$ di $f(z)$ allora \`e di ordine $k-1$ per $f'(z)$,
+        quindi la funzione $h(z) = \frac{f'(z)}{f(z)}$ ha un polo di ordine $1$ in $z_0$, quindi
+        \[
+            Res(h, z_0) = \lim_{z \to z_0} (z - z_0)\frac{f'(z)}{f(z)} = \dots = k.
+        \]
+    \end{answer}
+    \item Secondo lei a cosa serve? 
+    \begin{answer}
+        Se si integra $\frac{f'(z)}{f(z)} dz$ lungo un cammino chiuso di indice di avvolgimento $1$ intorno a $z_0$
+        si ottiene $2 k \pi i$.
+    \end{answer}
+\end{enumerate}
+
+\subsection{Orale 6}
+\begin{enumerate}
+    \item Sia $I$ un segmento che collega il polo sud ed il polo nord di $\Sph{2}$. \nl
+    Si calcoli il gruppo fondamentale di $X = \Sph{2} \cup I$.
+    \begin{answer}
+        Si prende $X_1 = X \setminus \text{segmento chiuso proprio di I}$ e $X_2 = I \cup \text{i punti a distanza } < \varepsilon \text{ da un meridiano}$
+        l'intersezione \`e semplicemente connessa, $X_2$ anche e quindi il gruppo fondamentale \`e lo stesso di $X_1$ cio\`e $\Z$
+    \end{answer}
+    \item Riesce a disegnare il rivestimento universale di $\Sph{1} \vee \Sph{2}$? Di che grado \`e? E quello di $X$?.
+    \begin{answer}
+        Il primo \`e una retta su cui si inseriscono dele sfere su ogni numero intero. \nl
+        Mentre il secondo \`e dato da una "catena" di sfere collegate da dei segmenti.
+    \end{answer}
+\end{enumerate}
+
+    
 
 
 \end{document}
