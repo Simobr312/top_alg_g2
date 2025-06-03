@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1748944955.21353 "/home/simobr/Desktop/top_alg_g2/main.tex" "main.pdf" "main" 1748944961.10164 0
+["pdflatex"] 1748956447.80525 "/home/simobr/Desktop/top_alg_g2/main.tex" "main.pdf" "main" 1748956453.98425 0
   "/etc/texmf/web2c/texmf.cnf" 1697795690.06303 475 c0e671620eb5563b2130f56340a5fde8 ""
   "/home/simobr/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbi1000.600pk" 1748771500.20879 34088 96a5d0df906138c1cbbd8777f351b677 ""
   "/home/simobr/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1000.600pk" 1748771506.26166 25396 c0ff26cdf2249e42b893489220ef3726 ""
@@ -11,7 +11,7 @@
   "/home/simobr/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1728.600pk" 1748771512.52113 42496 010af75c291317c5b6ddfd2f02ca9c97 ""
   "/home/simobr/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecti1000.600pk" 1748771501.74776 31872 3c564736e45007afbf1e9d195003d916 ""
   "/home/simobr/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1000.600pk" 1748771498.64082 11524 857662d309a6572fa0a6e0617f0785bb ""
-  "/home/simobr/Desktop/top_alg_g2/main.tex" 1748944954.49025 80900 573ebc24f8bd430b1936c3d082616962 ""
+  "/home/simobr/Desktop/top_alg_g2/main.tex" 1748956451.1936 83625 749950b9ebea04b2c339c3f5f963544c ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/jknappen/ec/ecbi1000.tfm" 1136768653 3072 e6fe53b666f9cbd66cb135c6fdea66d3 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/jknappen/ec/ecbx0500.tfm" 1136768653 3584 0913860e6fa2bdf78ecaf460b391112b ""
@@ -211,9 +211,9 @@
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1724436995.70144 128028 f533b797fba58d231669ea19e894e23e ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1724437030 6802361 538c001745391da7a4e34883cb9cdb4c ""
   "commands.sty" 1748937124.92169 2310 5112e7b1cf0024092f6ad47eb48aaab3 ""
-  "main.aux" 1748944960.66926 9898 c5c0974aa4845a7c327b70b80fc50d7f "pdflatex"
-  "main.tex" 1748944954.49025 80900 573ebc24f8bd430b1936c3d082616962 ""
-  "main.toc" 1748944960.68426 1914 4354990320eba2dc9a2890b0ddfbab52 "pdflatex"
+  "main.aux" 1748956453.4436 10732 b31223e687fa2bdbaad167efd59f4774 "pdflatex"
+  "main.tex" 1748956451.1936 83625 749950b9ebea04b2c339c3f5f963544c ""
+  "main.toc" 1748956453.4586 2136 21b4f0895ec3304a70a0a741e2ab6017 "pdflatex"
   "quiver.sty" 1748770161.42652 1606 5336dbc9eaea1b48aca50e50716a46b3 ""
   (generated)
   "main.aux"

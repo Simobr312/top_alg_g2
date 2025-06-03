@@ -1539,6 +1539,7 @@ Dunque per l'osservazione precedente le componenti connesse saranno sempre apert
     con i rivestimenti a meno di isomorfismo.
 \end{theorem}
 
+\clearpage
 \section{Domande orali del 3 Giugno}
 
 \subsection{Orale 1}
@@ -1656,6 +1657,58 @@ Dunque per l'osservazione precedente le componenti connesse saranno sempre apert
     \begin{answer}
         Il primo \`e una retta su cui si inseriscono dele sfere su ogni numero intero. \nl
         Mentre il secondo \`e dato da una "catena" di sfere collegate da dei segmenti.
+    \end{answer}
+\end{enumerate}
+
+\subsection{Orale 7}
+\begin{enumerate}
+    \item Il prodotto munito della topologia prodotto di spazi discreti \`e discreto?
+    \begin{answer}
+        S\`i, se il prodotto \`e finito se \`e infinito non necessariamente altrimenti.
+    \end{answer}
+    \item Esempio di prodotto infinito di discreti non discreto
+    \begin{answer}
+        $\set{0,1}^{\N}$ che non \`e discreto perch\'e $\set{(0,0,\dots,0)}$ non \`e aperto.
+    \end{answer}
+    \item Prodotto numearbile di metrizzabili \`e metrizzabile? ${0,1}^{\N}$ \`e I-numerabile?
+    \begin{proof}
+        Si ed inoltre metrizzabile implica I-numerabile.
+    \end{proof}
+    \item Se $X,Y$ sono metrizzabili e compatti, dimostri che $X \times Y$ \`e compatto.
+    \begin{proof}
+        Usando la caratterizzazione metrizzabili: compatto se e solo se completo e totalmente limitato
+    \end{proof}
+    \item Cos'\`e il numero di Lebesgue?
+\end{enumerate}
+
+
+\subsection{Orale 8}
+
+\subsection{Orale 9}
+\begin{enumerate}
+    \item Quali sono i legami tra la connession e la connessione per archi?
+    \begin{answer}
+        Connesso per archi implica connesso, ma non vale il viceversa.
+        Per la dimostrazione si \`e dato per buono che $I$ sia connnesso.
+    \end{answer}
+    \item Un esempio di spazio connesso ma non connesso per archi.
+    \begin{answer}
+        Il seno del topologo. La dimostrazione utilizza il fatto che se $Y$ \`e connesso
+        e $Y \subset Z \subset \closure{Y}$ allora $Z$ \`e connesso, ma questo fatto \`e dato per buono.
+    \end{answer}
+    \item Dimostra che il seno del topologo \`e connesso, senza utilizzare il lemma.
+    \begin{answer}
+        Se esistessero $A,B$ aperti non vuoti tali che $A \cup B = X$ e $A \cap B = \empty$. Supponendo senza perdit\`a
+        di generalit\`a che $(0,0) \in A$, l'insieme $A \setminus \set{(0,0)} \neq \emptyset$(dato che $\set{0,0} \in \closure{\Gamma(sin(\frac{1}{x}))} $) \`e aperto nel grafico di $sin\left(1/x\right)$
+        e quindi gli aperti $A \setminus \set{(0,0)}$ e $B$ sconnettono $sin\left(\frac{1}{x}\right)$ che per\`o \`e connesso.
+    \end{answer} 
+    \item Cosa sono le componenti connesse di uno spazio topologico? Se lo spazio ha una propriet\`a topologica "simpatica" cosa si sa dire?(TAMAS)
+    \begin{answer}
+        Se lo spazio \`e localmente connesso le componenti connesse sono aperte e chiuse.
+    \end{answer}
+    \item Esempio di spazi localmente connessi e di spazio non localmente connessi. Per esempio in $\R^n$.
+    \begin{answer}
+        Gli aperti di $\R^n$ sono sempre localmente connessi, mentre i chiusi in generale no per esempio $\set{\frac{1}{n} \mid n \in \N} \subset \R$ non \`e localmente connesso.
     \end{answer}
 \end{enumerate}
 
