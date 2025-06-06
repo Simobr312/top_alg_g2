@@ -7,8 +7,3 @@
 !readme.md
 !quiver.sty
 !.gitignore
-
-# Ignore all directories
-!*/
-# Ignore all files in directories
-!*/.*
