@@ -5,7 +5,8 @@
 !main.pdf
 !commands.sty
 !readme.md
-!.gitignore
+!quiver.sty
+
 # Ignore all directories
 !*/
 # Ignore all files in directories
