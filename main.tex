@@ -479,6 +479,7 @@ Da questo momento in poi, se $X$ \`e uno spazio topologico connesso per archi, s
             \tilde{f}_0(1) = \tilde{f}_1(1) \in \Z
         \] 
     \end{enumerate}
+    La dimostrazione di questo lemma sar\`a discussa in un contesto pi\`u generale nella sezione sui rivestimenti.
 \end{lemma}
 
 \begin{proof} (Lemma $\implies$ Teorema) \nl
@@ -498,28 +499,6 @@ Da questo momento in poi, se $X$ \`e uno spazio topologico connesso per archi, s
     se $f: I \to \Sph{1}$ \`e un cammino chiuso tale che $\tilde{f}(1) = 0$, si ha che $\tilde{f}$ \`e un cammino chiuso in $\R$ che parte da $0$ e torna a $0$, quindi
     poich\'e $\R$ \`e semplicemente connesso, esiste un'omotopia $H: I \times I \to \R$ da $\tilde{f}$ al camminio costante in $0$.
     Ma a questo punto si ha che $\rho \circ H$ è un'omotopia da $f$ al cammino costante in $1$, quindi $f$ è omotopo al cammino costante in $1$.
-\end{proof}
-
-\begin{proof} (del teorema) \nl
-    OK LA DIMOSTRAZIONE DI QUESTO FATTO FATTA DA TAMAS \`E RIDICOLA, MEGLIO FARE QUELLA PIU\' GENERALE DI FRIGERIO QUANDO SAR\`A POI
-    \begin{enumerate}
-        \item si consideri il ricoprimento di aperti di $\Sph{1}$ dato da due aperti $U_0, U_1$, archi che si intersecano in due componenti 
-        connesse per archi di $\Sph{1}$, una che contiene $1$ e l'altra che contiene $-1$. 
-        \nl
-        DISEGNO DA FARE
-        \nl
-        Considero le componenti connesse per archi di $\rho^{-1}(U_1)$, che formano un ricorpimento di aperti
-        per $\rho^{-1}(U_1)$. La mappa $\rho$ induce un omeomorfismo 
-        $\rho\big|_{\rho^{-1}(U_1)}: \rho^{-1}(U_1) \to U_1$(si vedr\`a che \`e un rivestimento di $U_1$)).
-        \nl
-        Inoltre, le componenti connesse per archi di $f^{-1}(U_0), f^{-1}(U_1)$ formano un ricoprimento di aperti per $I$.
-        \nl
-        L'intervallo $I$ \`e uno spazio metrico compatto, e dunque ammette un numero di Lebesgue. \nl
-        Siano quindi $t_0 = 0 < t_1 < t_2 < \ldots < t_n = 1$ i punti di $I$ tali che
-        ciascun intervallo della $\left[t_i, t_{i+1}\right]$ \`e interamente contenuto in uno
-        ed uno solo tra  $f^{-1}(U_0)$ e $f^{-1}(U_1)$ e inoltre $t_i \in f^{-1}(U_0) \cap f^{-1}(U_1) \quad \forall i$.
-        \nl
-    \end{enumerate}
 \end{proof}
 
 \begin{corollary} \nl
@@ -1737,16 +1716,158 @@ Dunque per l'osservazione precedente le componenti connesse saranno sempre apert
     Sia $X$ spazio connesso e localmente semplicemente connesso, allora esiste $\tilde{X} \to X$ rivestimento universale di $X$.
 \end{theorem}
 
-\begin{proof}
-    2 costruzioni spastiche.
+\begin{proof} \nl
+    Fissato un punto $x_0 \in X$, il rivestimento universale $\tilde{X}$ \`e definito come
+    \[
+        \tilde{X} := \set{\text{cammini } f: I \to X \mid f(0) = x_0} / \sim
+    \]
+    con $\pi: \tilde{X} \to X$ definita come
+    \[
+        \pi([f]) := f(1).
+    \]
+    \begin{itemize}
+        \item La topologia di $\tilde{X}$ ha come base la seguente: se $\tilde{x} \in \Tilde{X}$ e $U$ intorno semplicemente connesso di $f(1) = \pi(\tilde{x}) \in X$(che esiste per le ipotesi),
+        \[
+            \tilde{U_{\tilde{x}}} := \set{ [f * g] \mid g: I \to U \text{ cammino tale che } g(0) = f(1)}/~.
+        \]
+        dove $~$ \`e l'omotopia di cammini ad estremi fissi. \nl
+        Dato che $U$ \`e semplicemente connesso, le classi di omotopia dei cammini $g$ dipendono solo dal punto finale $g(1)$. \nl
+        Resta da mostrare che gli $\tilde{U_{\tilde{x}}}$ sono una base di una topologia su $\tilde{X}$ e che $\pi$ \`e continua. \nl
+    \item $\pi$ \`e un rivestimento e gli intorni ben rivestiti sono proprio quelli semplicemente connessi dati dalle ipotesi,
+    infatti $\forall x \in X$ se $U$ \`e un intorno semplicemente connesso di $x$, allora
+    \[
+        \pi^{-1}(U) = \bigsqcup_{\tilde{x} \in U} \tilde{U_{\tilde{x}}}
+    \]
+    \item $\tilde{X}$ \`e connesso per archi, infatti se $\tilde{x_0} = [I \to \set{x_0}] \in \tilde{X}$ \`e la classe del cammino costante
+    e $\tilde{x} = [f] \in \tilde{X}$ un qualsiasi altro elemento, allora il cammino
+    \[
+        \tilde{f}: I \to \tilde{X}: s \mapsto \left[t \mapsto f(st)\right]
+    \]
+    parte da $\tilde{f}(0) = [t \mapsto f(0)] = \tilde{x_0}$ e arriva a $\tilde{f}(1) = [t \mapsto f(t)] = \tilde{x}$, quindi $\tilde{X}$ \`e connesso per archi. \nl
+    Notare che tale cammino, essendo un sollevamento \`e unico. \nl
+    \item $\tilde{X}$ \`e semplicemente connesso, infatti se $\tilde{\gamma}: I \to \tilde{X}$ \`e un cammino chiuso tale che $\tilde{x} = \tilde{\gamma}(0) = \tilde{\gamma}(1)$,
+    allora $\gamma := \pi \circ \tilde{\gamma}: I \to X$ \`e tale che $\gamma(0) = \gamma(1) = x_0$, ma $\gamma$ \`e omotopo al cammino
+    costante $I \to \set{x_0}$, e per unicit\`a del sollevamento di cammini si ha che
+    \[
+        \tilde{\gamma} \sim I \to \set{\tilde{x}}
+    \]
+    che \`e l'unico sollevametno del cammino costatne $I \to \set{x_0}$.
+    \end{itemize}    
 \end{proof}
 
 \subsection{Dimostrazione del teorema di Seifert-Van Kampen}
 
+Si consdierino le seguenti due costruzinoi:
+\begin{enumerate}
+    \item Ad un omomorfismo surgettivo corrisponde un rivestimento di Galois: \nl
+        Sia $\varrho: \pi_1(X, x_0) \onto G$ un omomorfismo surgettivo e sia $N := \ker(\varrho)$ il suo nucleo. \nl
+        $N$ agisce su $\tilde{X}$, tramite l'azione $g.\tilde{x} := tilde{x} * g$, tale azione si verifica
+        essere propriamente discontinua e quindi definisce un riestimento connesso
+        \[
+            p_\varrho: Y_\varrho := \tilde{X}/N \to X
+        \]
+        Tale rivestimento risulta inoltre essere di Galois, $\pi^{-1}(U) \cong U \times \pi_1(X, x_0)/N$ per ogni intorno ben rivestito $U$ di $x_0$, dove $\pi_1(X, x_0)/N$ \`e munito dela topologia discreta. \nl
+        Segue che
+        \[
+            p^{-1}(U) \cong U \times \left(\frac{\pi_1(X, x_0)}{N}\right) \cong U \times G.
+        \]
+    \item Dato un rivestimento $p: Y \to X$ di Galois, si definisce l'omomorfismo
+        \[
+            \varrho: \pi_1(X, x_0) \to \Aut{Y/X} =: G
+        \]
+        come segue: fissato un $\tilde{x} \in p^{-1}(x_0)$, sia $g = [\gamma] \in \pi_1(X, x_0)$ e $\tilde{x_g} := \tilde{\gamma}(1) \in p^{-1}(x_0)$, dove
+        Fissato un $y \in p^{-1}(x_0)$, per un teorema precedente esiste un unico morfismo di rivestimenti $\varphi: \tilde{X} \to Y$ tale che $\varphi(x_0) = y$. \nl
+        Sia ora $\psi \in \Aut{Y/X}$ e $y_\psi := (\varphi \circ \psi)(\tilde{x_0}) \in p^{-1}(x_0)$. \nl
+        Poich\'e $p$ \`e di Galois, esiste un unico $g \in G = \Aut{Y/X}$ tale che $g(y) = y_\psi$. Vale dunque che
+        \[
+            (\varphi \circ \psi)(\tilde{x_0}) = (g \circ \varphi)(\tilde(x_0)) 
+        \] 
+        e 
+        \[
+            p \circ \varphi \circ \psi = p \circ g \circ \psi
+        \]
+        cio\`e il seguente diagramma commuta:
+        % https://q.uiver.app/#q=WzAsNixbMCwwLCJcXHRpbGRle1h9Il0sWzEsMCwiXFx0aWxkZXtYfSJdLFswLDEsIlkiXSxbMSwxLCJZIl0sWzAsMiwiWCJdLFsxLDIsIlgiXSxbNCw1LCJcXGlkIiwyXSxbMiw0LCJwIl0sWzMsNSwicCJdLFswLDIsIlxcdmFycGhpIl0sWzEsMywiXFx2YXJwaGkiXSxbMCwxLCJcXHBzaSJdLFsyLDMsImciLDEseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkYXNoZWQifX19XV0=
+        \[\begin{tikzcd}
+            {\tilde{X}} & {\tilde{X}} \\
+            Y & Y \\
+            X & X
+            \arrow["\psi", from=1-1, to=1-2]
+            \arrow["\varphi", from=1-1, to=2-1]
+            \arrow["\varphi", from=1-2, to=2-2]
+            \arrow["g", dashed, from=2-1, to=2-2]
+            \arrow["p", from=2-1, to=3-1]
+            \arrow["p", from=2-2, to=3-2]
+            \arrow["\id"', from=3-1, to=3-2]
+        \end{tikzcd}\]
+        A questo punto si definisce l'ommorfismo
+        \[
+            \varrho: \pi_1(X, x_0) \to \Aut{Y/X} = G: \psi \mapsto g_\psi
+        \]
+        che risulta essere omomorfismo perch\'e $g_2g_1$ \`e l'unico morfismo che fa commutare il seguente diagramma:
+       % https://q.uiver.app/#q=WzAsOSxbMCwwLCJcXHRpbGRle1h9Il0sWzEsMCwiXFx0aWxkZXtYfSJdLFswLDEsIlkiXSxbMSwxLCJZIl0sWzAsMiwiWCJdLFsxLDIsIlgiXSxbMiwwLCJcXHRpbGRle1h9Il0sWzIsMSwiWSJdLFsyLDIsIlgiXSxbNCw1LCJcXGlkIiwyXSxbMiw0LCJwIl0sWzAsMiwiXFx2YXJwaGkiXSxbMSwzLCJcXHZhcnBoaSJdLFswLDEsIlxccHNpXzEiXSxbMiwzLCJnXzEiLDAseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkYXNoZWQifX19XSxbMyw1LCJwIl0sWzMsNywiZ18yIiwwLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn19fV0sWzEsNiwiXFxwc2lfMiJdLFs2LDcsIlxcdmFycGhpIl0sWzcsOCwicCJdLFs1LDgsIlxcaWQiLDJdLFsyLDcsImdfMmdfMSIsMSx7ImN1cnZlIjoxLCJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkYXNoZWQifX19XV0=
+        \[\begin{tikzcd}
+            {\tilde{X}} & {\tilde{X}} & {\tilde{X}} \\
+            Y & Y & Y \\
+            X & X & X
+            \arrow["{\psi_1}", from=1-1, to=1-2]
+            \arrow["\varphi", from=1-1, to=2-1]
+            \arrow["{\psi_2}", from=1-2, to=1-3]
+            \arrow["\varphi", from=1-2, to=2-2]
+            \arrow["\varphi", from=1-3, to=2-3]
+            \arrow["{g_1}", dashed, from=2-1, to=2-2]
+            \arrow["{g_2g_1}"{description}, curve={height=6pt}, dashed, from=2-1, to=2-3]
+            \arrow["p", from=2-1, to=3-1]
+            \arrow["{g_2}", dashed, from=2-2, to=2-3]
+            \arrow["p", from=2-2, to=3-2]
+            \arrow["p", from=2-3, to=3-3]
+            \arrow["\id"', from=3-1, to=3-2]
+            \arrow["\id"', from=3-2, to=3-3]
+        \end{tikzcd}\]
+        Inoltre $\varrho$ \`e surgettivo,
+\end{enumerate}
+
+\begin{theorem} \nl
+    Le due costruzioni precedente sono l'una l'inversa dell'altra ed inducono una corrispondenza :
+    \begin{tikzcd}
+        {\set{\varrho: \pi_1(X, x_0) \to G}} \arrow[r,leftrightarrow] & {\set{\text{rivestimenti di Galois } p: Y \to X \mid y \in p^{-1}(x_0) \text{ fisso}}}
+    \end{tikzcd}
+\end{theorem}
+
+\begin{proof} [del Teorema di Seifert-Van-Kampen (preliminare)] \nl
+    Sia $X = X_1 \cup X_2$ la unione di due aperti $X_1$ e $X_2$ connessi per archi, tali che $X_1 \cap X_2$ sia connesso per archi.
+    Per la corrispondenza enunciata prima la situazione del teorema \`e la seguente:
+    % https://q.uiver.app/#q=WzAsNSxbMSwwLCJcXHBpXzFcXGxlZnQoWF8xLCB4XzBcXHJpZ2h0KSJdLFsxLDIsIlxccGlfMVxcbGVmdChYXzIsIHhfMFxccmlnaHQpIl0sWzAsMSwiXFxwaV8xXFxsZWZ0KFhfMSBcXGNhcCBYXzIsIHhfMFxccmlnaHQpIl0sWzIsMSwiXFxwaV8xXFxsZWZ0KFgsIHhfMFxccmlnaHQpIl0sWzMsMSwiRyJdLFswLDQsIlxcdmFycGhpXzEiXSxbMCwzLCJpX3sxKn0iLDJdLFsxLDMsImlfezIqfSJdLFszLDQsIlxcZXhpc3RzIVxcdmFycGhpIiwwLHsiY29sb3VyIjpbMCw2MCw2MF19LFswLDYwLDYwLDFdXSxbMiwwLCJqX3sxKn0iXSxbMiwxLCJqX3syKn0iLDFdLFsxLDQsIlxcdmFycGhpXzIiXV0=
+    \[\begin{tikzcd}
+	& {\pi_1\left(X_1, x_0\right)} \\
+	{\pi_1\left(X_1 \cap X_2, x_0\right)} && {\pi_1\left(X, x_0\right)} & G \\
+	& {\pi_1\left(X_2, x_0\right)}
+	\arrow["{i_{1*}}"', from=1-2, to=2-3]
+	\arrow["{\varrho_1}", from=1-2, to=2-4]
+	\arrow["{j_{1*}}", from=2-1, to=1-2]
+	\arrow["{j_{2*}}"', from=2-1, to=3-2]
+	\arrow["{i_{2*}}", from=3-2, to=2-3]
+	\arrow["{\varrho_2}"', from=3-2, to=2-4]
+    \end{tikzcd}\]
+    Si suppone per la dimostrazione che:
+    \begin{enumerate}
+        \item X \`e localmente semplicemente connesso, dunque esiste il suo rivestimento universale. \nl
+        \item (per ora) le mappe $\varrho_1$ e $\varrho_2$ sono surgettive.
+    \end{enumerate}
+    Per il teorema precedente si ha che esistono due rivestimenti $p_1: Y_1 \to X_1, p_2: Y_2 \to X_2$ che corrispondono rispettivamente
+    a $\varrho_1$ e $\varrho_2$ e che hanno come gruppo di Galois proprio $G$.
+    Inoltre le restrizioni
+    \[
+        \restrict{p_i}{p_i^{-1}(X_1 \cap X_2)}: p_i^{-1}(X_1 \cap X_2) \toiso X_1 \cap X_2
+    \]
+    sono isomorfismi gli unici isomorfismi fissato $x_0 \in X_1 \cap X_2$ e $y_0$ nella preimmagine. \nl
+    Per continuare la dimostrazione ci sar\`a bisogno del lemma che segue.
+\end{proof}
+
 \begin{lemma} \nl
     Siano $p_1: Y_1 \to X_1$, $p_2: Y_2 \to X_2$ due rivestimenti e $\varphi: Y_1 \to Y_2$ un morfismo di rivestimenti, allora
     \[
-        \exists p: Y \to X = x_1 \cup X_2 \text{ rivestimento tale che } \restrict{p}{p^{-1}(X_i)} \cong p_i^{-1}(X_i) \to X
+        \exists p: Y \to X(= X_1 \cup X_2) \text{ rivestimento tale che } \restrict{p}{p^{-1}(X_i)} \cong p_i^{-1}(X_i) \to X
     \]
     Inoltre se $p_1, p_2$ sono di Galois allora anche $p$ \`e di Galois.
 
@@ -1759,6 +1880,28 @@ Dunque per l'osservazione precedente le componenti connesse saranno sempre apert
 	\arrow[from=1-3, to=2-2]
     \end{tikzcd}\]
 \end{lemma}
+
+\begin{proof} [del lemma]
+    Sia $Y := \frac{Y_1 \sqcup Y_2}{/sim}$ dove $y_1 \sim y_2$ se e solo se $y_i \in p^{-1}(X_1 \cap X_2)$ e $\varphi(y_1) = y_2$. \nl
+    Sia $p: Y \to X$ la mappa indotta naturalmente da $p_1$ e $p_2$, cio\`e
+    \[
+        p(y) := 
+        \begin{cases}
+            p_1(y) & \text{se } y \in Y_1 \\
+            p_2(y) & \text{se } y \in Y_2
+        \end{cases}
+    \]
+    e poich\'e $\restrict{p}{p_i^{-1}(X_i)} \cong p_i$ , si ha che $p$ \`e un rivestimento. \nl 
+    Inoltre se $Y_1, Y_2$ sono connessi lo \`e anche $Y$. \nl
+    Inoltre per qualche motivo a me non ancora ovvio, se $p_1, p_2$ sono di Galois con gruppo $G$, allora anche $p$ \`e di Galois con gruppo $G$. \nl
+\end{proof}
+
+\begin{proof} [del Teorema di Seifert-Van-Kamper (conclusione)] \nl
+    La $p$ che esiste per il lemma precedente e che fa commutare il diagramma, e corrisponde proprio ad una 
+    $\varphi: \pi_1(X, x_0) \to G$ tale che il diagramma del prodotto amalgamato sia soddisfatto. \nl
+    Per dimostrare che il teorema vale anche quando i $\varrho_i$ non sono surgettivi va modificata la costruzione 1 in modo da fare una corrispondenza tra tutti
+    gli omomorifsmi e una nuova classe di rivestimenti, detti $G$-rivestimenti. Gli ultimi fatti del corso, puntano a costruire tale corrispondenza.
+\end{proof}
 
 \begin{definition} [$G$-rivestimento] \nl
     Un $G$-rivestimento \`e un rivestimento della forma $Y \to Y/G$ dove $G$ \`e un gruppo che agisce in
