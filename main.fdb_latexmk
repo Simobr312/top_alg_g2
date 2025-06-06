@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1749200428.96263 "/home/simobr/Desktop/top_alg_g2/main.tex" "main.pdf" "main" 1749200430.5481 0
+["pdflatex"] 1749200926.87976 "/home/simobr/Desktop/top_alg_g2/main.tex" "main.pdf" "main" 1749200928.71282 0
   "/etc/texmf/web2c/texmf.cnf" 1697795690.06303 475 c0e671620eb5563b2130f56340a5fde8 ""
   "/home/simobr/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbi1000.600pk" 1748771500.20879 34088 96a5d0df906138c1cbbd8777f351b677 ""
   "/home/simobr/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1000.600pk" 1748771506.26166 25396 c0ff26cdf2249e42b893489220ef3726 ""
@@ -211,9 +211,9 @@
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1724436995.70144 128028 f533b797fba58d231669ea19e894e23e ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1724437030 6802361 538c001745391da7a4e34883cb9cdb4c ""
   "commands.sty" 1748985697.42921 2310 5112e7b1cf0024092f6ad47eb48aaab3 ""
-  "main.aux" 1749200430.44454 10733 b86ee7abed9b9c9eceb235a550c26ad3 "pdflatex"
+  "main.aux" 1749200928.56529 10733 b86ee7abed9b9c9eceb235a550c26ad3 "pdflatex"
   "main.tex" 1749200426.92955 98747 0d8da42bbb408ce089a4ecbb3af791c8 ""
-  "main.toc" 1749200430.44854 2137 7f0108cdcd2014c0ea797c84e34de56c "pdflatex"
+  "main.toc" 1749200928.56929 2137 7f0108cdcd2014c0ea797c84e34de56c "pdflatex"
   "quiver.sty" 1748770161.42652 1606 5336dbc9eaea1b48aca50e50716a46b3 ""
   (generated)
   "main.aux"

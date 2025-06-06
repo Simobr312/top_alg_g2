@@ -6,6 +6,7 @@
 !commands.sty
 !readme.md
 !quiver.sty
+!.gitignore
 
 # Ignore all directories
 !*/
