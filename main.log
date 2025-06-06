@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2024.8.23)  3 JUN 2025 15:14
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2024.8.23)  6 JUN 2025 10:45
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -683,136 +683,136 @@ Underfull \hbox (badness 10000) in paragraph at lines 525--526
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 562--563
+Underfull \hbox (badness 10000) in paragraph at lines 577--578
 
  []
 
 [8] [9]
-Underfull \hbox (badness 10000) in paragraph at lines 695--696
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 734--738
+Underfull \hbox (badness 10000) in paragraph at lines 710--711
 
  []
 
 [10]
-Underfull \hbox (badness 10000) in paragraph at lines 811--813
+Underfull \hbox (badness 10000) in paragraph at lines 749--753
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 826--828
 
  []
 
 [11]
-Underfull \hbox (badness 10000) in paragraph at lines 857--858
+Underfull \hbox (badness 10000) in paragraph at lines 872--873
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 861--862
+Underfull \hbox (badness 10000) in paragraph at lines 876--877
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 882--883
+Underfull \hbox (badness 10000) in paragraph at lines 897--898
 
  []
 
-[12]
-Underfull \hbox (badness 10000) in paragraph at lines 964--965
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 975--985
-
- []
-
-[13]
-Underfull \hbox (badness 10000) in paragraph at lines 985--987
+[12] [13]
+Underfull \hbox (badness 10000) in paragraph at lines 979--980
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 987--988
-
- []
-
-[14]
-Underfull \hbox (badness 10000) in paragraph at lines 1097--1099
-
- []
-
-[15]
-Underfull \hbox (badness 10000) in paragraph at lines 1130--1132
+Underfull \hbox (badness 10000) in paragraph at lines 990--1000
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1182--1184
+Underfull \hbox (badness 10000) in paragraph at lines 1000--1002
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1002--1003
+
+ []
+
+[14] [15]
+Underfull \hbox (badness 10000) in paragraph at lines 1112--1114
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1161--1163
 
  []
 
 [16]
-Overfull \hbox (21.6203pt too wide) detected at line 1186
+Underfull \hbox (badness 10000) in paragraph at lines 1213--1215
+
+ []
+
+
+Overfull \hbox (21.6203pt too wide) detected at line 1217
 \OML/cmm/m/it/10 p[]  \OMS/cmsy/m/n/10 ([])  8\OML/cmm/m/it/10 x \OMS/cmsy/m/n/10 2 \OML/cmm/m/it/10 X \OMS/cmsy/m/n/10 9\OML/cmm/m/it/10 U[]p[] \OT1/cmr/m/n/10 : \OML/cmm/m/it/10 p[]\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 U\OT1/cmr/m/n/10 ) \OMS/cmsy/m/n/10 ! \OML/cmm/m/it/10 U[]
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 1207--1208
-
- []
-
-[17] [18] [19]
-Underfull \hbox (badness 10000) in paragraph at lines 1412--1413
+[17] [18] [19] [20]
+Underfull \hbox (badness 10000) in paragraph at lines 1487--1488
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1428--1431
+Underfull \hbox (badness 10000) in paragraph at lines 1493--1496
+
+ []
+
+[21] [22]
+Underfull \hbox (badness 10000) in paragraph at lines 1626--1629
+
+ []
+
+[23]
+Underfull \hbox (badness 10000) in paragraph at lines 1677--1678
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1448--1449
+Underfull \hbox (badness 10000) in paragraph at lines 1678--1679
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1482--1483
+Underfull \hbox (badness 10000) in paragraph at lines 1683--1685
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1483--1484
+Underfull \hbox (badness 10000) in paragraph at lines 1715--1717
 
  []
 
+[24] [25] [26
 
-Underfull \hbox (badness 10000) in paragraph at lines 1488--1490
-
- []
-
-[20] [21] [22
-
-] [23] [24] (./main.aux)
+] [27] [28] (./main.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-22>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 25884 strings out of 476171
- 493630 string characters out of 5795119
- 1950975 words of memory out of 5000000
- 47247 multiletter control sequences out of 15000+600000
+ 26045 strings out of 476171
+ 497358 string characters out of 5795119
+ 1954975 words of memory out of 5000000
+ 47397 multiletter control sequences out of 15000+600000
  577685 words of font info for 82 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 84i,18n,111p,824b,1263s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 84i,18n,111p,824b,1265s stack positions out of 10000i,1000n,20000p,200000b,200000s
  </home/simobr/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1000.600pk> </home/simobr/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbi1000.600pk> </home/simobr/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecti1000.600pk> </home/simobr/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1200.600pk> </home/simobr/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1000.600pk> </home/simobr/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1000.600pk> </home/simobr/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1440.600pk> </home/simobr/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm0900.600pk> </home/simobr/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1200.600pk> </home/simobr/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1728.600pk></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm7.pfb>
-Output written on main.pdf (24 pages, 359461 bytes).
+Output written on main.pdf (28 pages, 380567 bytes).
 PDF statistics:
- 890 PDF objects out of 1000 (max. 8388607)
- 495 compressed objects within 5 object streams
- 214 named destinations out of 1000 (max. 500000)
+ 921 PDF objects out of 1000 (max. 8388607)
+ 520 compressed objects within 6 object streams
+ 225 named destinations out of 1000 (max. 500000)
  205 words of extra memory for PDF output out of 10000 (max. 10000000)
 

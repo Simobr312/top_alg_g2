@@ -176,12 +176,12 @@
             \[
                 (\gamma_1 * \gamma_2) * \gamma_3 \sim \gamma_1 * (\gamma_2 * \gamma_3).
             \]
-            Poich\'e $\gamma_1 * (\gamma_2 * \gamma_3)$ si pu\`o vedere come una Riparametrizzazione
-            del cammino $(\gamma_1 * \gamma_2) * \gamma_3$ e quinid usare il lemma.
+            Poich\'e $\gamma_1 * (\gamma_2 * \gamma_3)$ si pu\`o vedere come una riparametrizzazione
+            del cammino $(\gamma_1 * \gamma_2) * \gamma_3$ e quindi usare il lemma.
             \item (Unità) \nl
             L'elemento neutro del gruppo fondamentale è il cammino costante in $x_0$, che si denota con $e: I \to {x_0}$. \nl
             Infatti, per ogni cammino $\gamma: I \to X$ si ha che
-            $\gamma * e $ \`e la Riparametrizzazione di $\gamma$ secondo la mappa
+            $\gamma * e $ \`e la riparametrizzazione di $\gamma$ secondo la mappa
             \[
                 \varphi: I \to I: t \mapsto \begin{cases}
                     2t & \text{se } 0 \leq t \leq \frac{1}{2}, \\
@@ -465,7 +465,7 @@ Da questo momento in poi, se $X$ \`e uno spazio topologico connesso per archi, s
         \textbf{esiste ed unico} un cammino(in generale non chiuso) $\tilde{f}: I \to \R$ detto \textbf{sollevamento di $f$ in $\R$} tale che
         \[
             \tilde{f}(0) = 0 \quad \text{e} \quad \rho \circ \tilde{f} = f.
-        \]Il terminale mi dice di aver committato, ma su github la repository non sembra essere commi
+        \]
         Ovvero il seguente diagramma commuta:
         \[\begin{tikzcd}
             I & \R \\
@@ -538,6 +538,21 @@ Da questo momento in poi, se $X$ \`e uno spazio topologico connesso per archi, s
     In altre parole, $r$ \`e una retrazione se \`e continua e manda ogni punto di $Y$ su se stesso. \nl
     Si dice che $Y$ \`e \textbf{retratto} in $X$ se esiste una retrazione da $X$ a $Y$.
 \end{definition}
+
+
+\begin{definition} [Retrazione per deformazione] \nl
+    Questa definizione non \`e stata data a lezione, tuttavia l'ho ritenuta un utile strumento per gli esercizi. \nl
+    Sia $Y \subset X$ un sottospazio topologico. Una mappa continua $r: X \to Y$ si dice \textbf{retrazione per deformazione} se
+    \[
+        r \circ i ~ \id_Y
+    \]
+    dove l'omotopia tra le due mappe  \`e tale che $H(x, 1) \in X \quad \forall x \in X$ e $H(y,t) \in Y \quad \forall y \in Y$. \nl
+    In tal caso $Y$ si dice \textbf{retratto per deformazione} di $X$.
+\end{definition}
+
+\begin{remark}
+    Se $Y$ \`e un retratto per deformazione di $X$ allora $X$ e $Y$ sono omotopicamente equivalenti. 
+\end{remark}
 
 \begin{example}
     \begin{enumerate}
@@ -1098,9 +1113,25 @@ Dunque per l'osservazione precedente le componenti connesse saranno sempre apert
     e $p_{\big| U_i}: U_i \to U_x$ \`e un omeomorfismo $\forall i \in I$. \nl
 \end{definition}
 
-\begin{remark}
-    Un rivestimento \`e sempre un'applicazione aperta e omeomorfismo locale.
-\end{remark}
+\begin{proposition} [I rivestimenti sono omeomorfismi locali] \nl
+    Sia $p: Y \to X$ un rivestimento, allora $p$ \`e un omeomorfismo locale, cio\`e
+    \[
+        Y = \bigcup_{i \in I} U_i \text{ aperti}, \quad \text{con } \restrict{p}{U_i}: U_i \to p(U_i) \text{ omeomorfismo e } p(U_i) \text{ \`e aperto in X} \forall i \in I.
+    \]
+\end{proposition}
+
+\begin{proof} \nl
+    $\forall y \in Y$ sia $x = p(y)$, allora per la definizione di rivestimento esiste un intorno ben rivestito $U_x$ di $x$ tale che
+    \[
+        p^{-1}(U_x) = \bigsqcup_{i \in I} U_i,
+    \]
+    e $p_{\big| U_i}: U_i \to U_x$ \`e un omeomorfismo su un aperto per ogni $i \in I$. \nl 
+    $y \in p^{-1}(U_x)$ e dall'unione disgiunta si ha che esiste un unico $i_{y} \in I$ tale che $y \in U_{i_y}$, e quindi
+    \[
+        Y = \bigcup_{y \in Y} U_{i_y},
+    \]
+    con $p(U_{i_y}) = U_x$ che \`e aperto e $\restrict{p}{U_{i_y}}: U_{i_y} \to U_x$ omeomorfismo. \nl
+\end{proof}
 
 \begin{example} [Rivestimento banale] \nl
     Sia $X$ uno spazio topologico e $F$ uno spazio topologico discreto, allora $Y = X \times F \cong \bigsqcup_{f \in F} X$ e la mappa $p: Y \to X$ di proiezione sulla prima coordinata
@@ -1187,26 +1218,49 @@ Dunque per l'osservazione precedente le componenti connesse saranno sempre apert
 \end{proposition}
 
 \begin{proof} \nl
-    $(\Leftarrow)$ Dovrebbe essere facile, ma \`e da scrivere. \nl
+    $(\Leftarrow)$  \nl
     $(\Rightarrow)$ Se $p^{-1}(U) = \bigsqcup_{i \in I} U_i$, si pu\`o munire $I$ della topologia discreta
     e in questo modo $p^{-1}(U) \cong I \times U$ e la mappa $\varphi: Y \to I \times U: y \mapsto (i, p(y))$ se $y \in U_i$ \`e un omeomorfismo e dunque un isomorifsmo tra i due rivestimenti.
 \end{proof}
 
-\begin{corollary} [Fibre di un rivestimento] \nl
+\begin{theorem} [Fibre di un rivestimento] \nl
     Se $X$ \`e uno spazio topologico connesso e $p: Y \to X$ \`e un rivestimento, allora tutte le fibre hanno la stessa cardinalit\`a. \nl
     Cio\`e \[
         \forall x,y \in X \quad \abs{p^{-1}(x)} = \abs{p^{-1}(y)}.
     \]
-\end{corollary}
+\end{theorem}
 
 \begin{definition} [Grado di un rivestimento] \nl
     Il corollario precedente permette di definire il \textbf{grado} di un rivestimento $p: Y \to X$ come la cardinalit\`a di una qualunque delle fibre di $p$.
 \end{definition}
 
-\begin{proof}
-    Mostriamo che per ogni $\alpha$ "cardinale" l'insieme $X_{\alpha} = \set{x \in X \mid \abs{p^{-1}(x)} = \alpha}$ \`e sia aperto che chiuso. \nl
+\begin{corollary} [I rivestimenti sono surgettivi]
+    Se $p: Y \to X$ \`e un rivestimento e $Y \neq \emptyset$, allora $p$ \`e surgettiva.
+\end{corollary}
 
-    Da finire.
+\begin{proof} \nl
+    Segue dal teorema precedente, poich\'e 
+    \[p: Y \to X \text{ \`e surgettiva se e solo se } \forall x \in X \quad \abs{p^{-1}(x)} \geq 1\]
+    cio\`e il grado del rivestimento \`e maggiore o uguale a 1. \nl'
+    Ma dato che $Y \neq \emptyset$, esiste un punto $y \in Y$ ed un punto $x = p(y) \in X$ tale che $p^{-1}(x) \neq \emptyset$, e quindi il grado
+    di $p$ \`e maggiore o uguale ad 1.
+\end{proof}
+
+
+\begin{proof} \nl
+    Dato $x_0 \in X$ si considera l'insieme
+    \[ \Omega := \set{x \in X \mid \abs{p^{-1}(x_0)} = \abs{p^{-1}(x_0)}}\]
+    Dato che $X$ \`e connesso, mostrando che $\Omega$ \`e sia aperto che chiuso si conclude che $\Omega = X$. \nl
+    Si mostra che $\Omega$ \`e aperto, mostrando che \`e intorno di ogni suo punto. \nl
+    Infatti se $x \in \Omega$ allora esiste un intorno ben rivestito $U_x$ di $x$ tale che
+    \[
+        p^{-1}(U_x) = \bigsqcup_{i \in I} U_i,
+    \]
+    con $\restrict{p}{U_i}: U_i \to U_x$ omeomorfismo, e quindi in particolare bigezione. \nl
+    Dunque per ogni $x \in X$ si ha che $\abs{\restrict{p}{U_i}^{-1}(x)} = 1$ per ogni $i \in I$ e quindi si ha una bigezione
+    tra $p^{-1}(x)$ e $I$ e quindi in particolare in bigezione con $p^{-1}(x_0)$, per ogni $x \in U$, per cui $U \in \Omega$ che \`e quindi intorno di $x$. \nl
+    Ora, dato che esistono degli $x \in X$ tali che gli insiemi $\Omega(x)$ partizionano $X$, si ha che $\Omega(x_0)$ \`e il complementare di un
+    unione arbitraria di aperti, che \`e aperta e dunque $\Omega$ \`e chiuso. Da cui segue la tesi. \nl
 \end{proof}
 
 \subsection{Azioni propriamente discontinue}
@@ -1302,7 +1356,7 @@ Dunque per l'osservazione precedente le componenti connesse saranno sempre apert
 \begin{lemma} \nl
     Sia $Y \to X$ un rivestimento connesso e $\varphi \in \Aut{Y/X}$, vale che
     \[
-    \exists y \in Y \tc \varphi(y) = y \implies \phi = \id
+    \exists y \in Y \tc \varphi(y) = y \implies \varphi = \id
     \]
     Cio\`e l'unico automorfismo di rivestimento che lascia fisso un punto \`e l'identit\`a. \nl
     Quindi gli automorfismi di rivestimenti indotti da azioni propriamente discontinue non hanno punti fissi.
@@ -1318,10 +1372,10 @@ Dunque per l'osservazione precedente le componenti connesse saranno sempre apert
     Quindi $\varphi = \varphi_g$ e dunque la mappa \`e surgettiva.
 \end{proof}
 
-\begin{proposition} \nl
+\begin{proposition} [Unicit\`a di sollevamenti di mappe continue qualunque] \nl
     Siano $p: Y \to X$ un rivestimento cnnesso e $Z$ uno spazio topologico connesso. Siano inoltre 
-    $f, g: Z \to X$ due mappe continue tali che $p \circ f = p \circ g$. Vale che 
-    %%\[\exists z \in Z \tc f(z) = g(Z) \quad \implies \quad f = g\]
+    $f, g: Z \to X$ due mappe continue tali che $p \circ f = p \circ g$.
+    \[\exists z \in Z \tc f(z) = g(Z) \quad \implies \quad f = g\]
     %%\[\begin{tikzcd}
 	%%Z & Y & X
 	%%\arrow["g"', shift right, from=1-1, to=1-2]
@@ -1362,7 +1416,24 @@ Dunque per l'osservazione precedente le componenti connesse saranno sempre apert
 \end{proposition}
 
 \begin{proof}
-
+    Si mostra che $\forall y \in Y$, $\exists U_i$ intorno di $y$ tale che $\forall \varphi_1, \varphi_2 \in \Aut(Y/X)$
+    \[
+        \varphi_1(U_i) \cap \varphi_2(U_i) = \emptyset \text{ se } \varphi_1 \neq \varphi_2.
+    \] 
+    Si mostra prima che $\exists U_i$ tale che $\forall \varphi \in \Aut{Y/X}$
+    \[
+        \varphi(U_i) \cap U_i = \emptyset \text{ se } \varphi \neq id_Y.
+    \]
+    La tesi seguir\`a ponendo $\varphi = \varphi_1 \circ \varphi_2^{-1}$, per cui
+    \[
+        \left(\varphi_1 \circ \varphi_2^{-1}\right)(U_i) \cap U_i = \emptyset \implies \varphi_1(U_i) \cap \varphi_2(U_i) = \emptyset.
+    \]
+    Tale fatto segue dal lemma precedente, infatti se $U$ \`e un intorno ben rivestito di $x = p(y)$, allora
+    \[
+        p^{-1}(U) = \bigsqcup_{i \in I} U_i,
+    \]
+    e se $\varphi \in \Aut{Y/X}$ allora esiste $j \in I$ tale che $\varphi(U_j) = U_j$, e se quando $i \neq j$ esistesse
+    un punto $y' \in U_i \cap U_j$, allora per il lemma precedente si avrebbe che $\varphi = \id$. \nl
 \end{proof}
 
 \subsection{Teoria di Galois per rivestimenti}
@@ -1370,12 +1441,16 @@ Dunque per l'osservazione precedente le componenti connesse saranno sempre apert
 \begin{definition} [Rivestimento di Galois] \nl
     Dalla proposizione precedente se $p: Y \to X$ \`e un rivestimento connesso si ha la fattorizzazione di $p$ data da:
     \[\begin{tikzcd}
-	Y & {Y/\Aut(Y/X)} & X
+	Y & {Y/\Aut{Y/X}} & X
 	\arrow["\pi", from=1-1, to=1-2]
 	\arrow["p"', curve={height=12pt}, from=1-1, to=1-3]
 	\arrow["{\bar{p}}", from=1-2, to=1-3]
     \end{tikzcd}\]
     Se $\bar{p}$ \`e un omeomorfismo si dice che il rivestimento \`e di Galois.
+    In sostanza un rivestimento \`e di Galois, se
+    \[
+        X \cong \frac{Y}{\Aut{Y/X}}
+    \]
 \end{definition}
 
 \begin{remark}
@@ -1413,7 +1488,103 @@ Dunque per l'osservazione precedente le componenti connesse saranno sempre apert
 
 \end{example}
 
-\subsection{RIvestimento universale}
+\subsection{Rivestimento universale}
+
+\begin{theorem} [Sollevamento di cammini e omotopie] \nl
+    Sia $p: Y \to X$ un rivestimento, $x_0 \in X$ e $y \in p^{-1}(x)$. Vale \nl
+    \begin{enumerate}
+        \item (Esistenza ed unicit\`a del sollevamento) \nl
+            Se $\gamma: I \to X$ \`e un cammino tale che $\gamma(0) = x_0$, allora
+            $\exists! \tilde{\gamma}: I \to Y$ cammino tale che $p \circ \tilde{\gamma} = \gamma$ e $\tilde{\gamma}(0) = y$
+            \[\begin{tikzcd}
+            I & Y \\
+            & X
+            \arrow["{\tilde{\gamma}}", from=1-1, to=1-2]
+            \arrow["\gamma"', from=1-1, to=2-2]
+            \arrow["p", from=1-2, to=2-2]
+        \end{tikzcd}\]
+        \item (Sollevamento dell'omotopia) \nl
+        Se $\gamma_0 \sim \gamma_1$ sono due cammini omotopi allora $\tilde{\gamma_0}(1) = \tilde{\gamma_1}(1)$ e $\tilde{\gamma_0} \sim \tilde{\gamma_1}$ 
+    \end{enumerate}
+\end{theorem}
+
+\begin{proof} [Esistenza ed unicit\`a del sollevamento] \nl
+    La dimostrazione di seguito riportata \`e quella fatta nel corso l'anno precedente. L'idea \`e la stessa, si \`e ritenuto che questa dimostrazione fosse pi\`u dettagliata. \nl
+    Poich\'e $p$ \`e un rivestimento, la famiglia 
+    \[
+        \mathcal{U} := \left\{ U_x \subset X \;\middle|\; x \in X \text{ e } U_x \text{ è un intorno ben rivestito di } x \right\}.
+    \]
+    \`e un ricoprimento di aperti di X. \nl
+    Poich\'e $\gamma$ \`e un cammino, \`e in particolare una mappa continua e quindi
+    \[
+        \gamma^{-1}(\mathcal{U}) = \set{\gamma^{-1}(U) \mid U \in \mathcal{U}}
+    \]
+    \`e un ricoprimento di aperti dell'intervallo $I = [0, 1]$. \nl
+    L'intervallo \`e uno spazio metrico compatto e quindi ogni suo ricoprimento di aperti amette numero di Lebesgue $\varepsilon$ tale Che
+    \[
+        \forall t \in I \quad \exists V \in \mathcal(U) \tc \ball{t}{\varepsilon} \subset V.
+    \]
+    Dunque se $n \in \N$ tale che $\frac{1}{n} < \varepsilon$ si pu\`o definire la sequenza finita di intervalli:
+    \[
+        \set{I_k = \left[\frac{k}{n}, \frac{k+1}{n}\right] \mid k = 0, \ldots, n-1}.
+    \]
+    tali che $\forall k = 0, \ldots, n-1$ si ha che $\gamma(I_k) \subset U_k$ per qualche $U_k \in \mathcal{U}$. \nl
+    Si definisce ora la mappa $\tilde{\gamma}: I \to Y$ definendola su ciascun $I_k$. \nl
+    Per $k = 0$, $\gamma(I_0) \subset U_0$ che \`e ben rivestito, siano $W_i$ gli intorni della fibra, cio\`e
+    \[ 
+        p^{-1}(U_0) = \bigsqcup_{i \in I} W_i,
+    \]
+    e si sceglie l'unico $\bar{W_0} := W_{i_0}$ tale che $y \in W_{i_0}$. \nl
+    A tal punto si definisce $\tilde{\gamma}$ su $I_0$ come
+    \[
+        \restrict{\tilde{\gamma}}{\left[0, \frac{1}{n}\right]} := \restrict{p}{\bar{W_0}}^{-1} \circ \restrict{\gamma}{\left[0,\frac{1}{n}\right]}.
+    \]
+    Si costruisce ora $\tilde{\gamma}$ ricorsivamente, ponendo $y_k := \restrict{\tilde{\gamma}}{\left[\frac{k}{n}, \frac{k+1}{n}\right]}(1)$.
+    E
+    \[
+        \restrict{\tilde{\gamma}}{\left[\frac{k}{n}, \frac{k+1}{n}\right]} = \restrict{p}{\bar{W_k}}^{-1} \circ \restrict{\gamma}{\left[\frac{k}{n}, \frac{k+1}{n}\right]}.
+    \]
+    dove $\bar{W_k}$ \`e l'unico intorno di $y_k$ della fibra dell'intorno ben rivestito di $x = p(y_k).$ \nl
+    L'unicit\`a segue da un lemma della sottosezione precedente che dimostrava l'unicit\`a dei sollevamenti
+    di mappe continue qualunque.    
+\end{proof}
+
+\begin{proof} [Sollevamento dell'omotopia] \nl
+    La seguente dimostrazione \`e quella invece data da Tamas, si \`e ritenuto fosse meno dispersiva(l'anno precedente si era sollevata l'omotopia in generale, mentre quest'anno solo quella di cammini). \nl
+    Si dimostrer\`a che se $H: I \times I \to X$ l'omotopia ad estremi fissi tra due cammini $\gamma_0, \gamma_1: I \to X$, allora
+    \[
+        \exists \tilde{H}: I \times I \to Y \text{ tale che } p \circ \tilde{H} = H \text{ e } \tilde{H}(t, 0) = \tilde{\gamma_0}(t), \quad \tilde{H}(t, 1) = \tilde{\gamma_1}(t). 
+    \]
+    detto sollevamento dell'omotopia $H$. \nl
+    Come nel sollevamento dei cammini, si considera il ricoprimento di aperti del quadrato dato da:
+    \[
+        \gamma^{-1}(\mathcal{U}) = \set{\gamma^{-1}(U) \mid U \in \mathcal{U}}
+    \]
+    e poich\'e il quadrato \`e compatto, si ha che esiste un numero di Lebesgue $\varepsilon$ tale che
+    \[
+        \forall (t, s) \in I \times I \quad \exists V \in \mathcal{U} \tc \ball{(t, s)}{\varepsilon} \subset V.
+    \]
+    Si pu\`o dare un'ordinamento lessicografico agli intervalli di $I \times I$ e si costruisce il sollevamento in maniera
+    ricorsiva ed analoga al caso precedente ma lungo un "serpente" che attraversa il quadrato $I \times I$. \nl
+    Per unicit\`a del sollevametno di cammini, dato che il cammino $t \mapsto \tilde{H}(t, 0)$ \`e tale che
+    \[
+        p(\tilde{H}(t, 0)) = H(t, 0) = \gamma_0(t), \quad \forall t \in I,
+    \]
+    allora vale che $(t \mapsto \tilde{H}(t, 0)) = \tilde{\gamma_0}$.
+    Analogamente si ha che $(t \mapsto \tilde{H}(t, 1)) = \tilde{\gamma_1}$. \nl
+    Inoltre, il cammino $s \mapsto \tilde{H}(0, s)$ \`e tale che  
+    \[
+        p(\tilde{H}(0, s)) = H(t, s) \quad \forall s \in I,
+    \]
+    e quindi il cammino definito da $\tilde{H}(0, s)$ \`e un sollevamento del cammino definito da $H(0, s)$. \nl
+    Ma dato che l'omotopia \`e ad estremi fissi tale cammino \`e il cammino costante $ s \mapsto \gamma_0(0)$ e l'unico sollevamento del cammino
+    costante \`e il cammino costante $s \mapsto \tilde(\gamma_0)(0)$, quindi
+    \[
+        \tilde{H}(0, s) = \tilde{\gamma_0}(0) \quad \forall s \in I.
+    \]
+    e analogamente si ha che $\tilde{H}(1, s) = \tilde{\gamma_1}(1)$. \nl
+    Si conclude che il sollevamento dell'omotopia $\tilde{H}$ \`e un omotopia ad estremi fissi tra i cammini $\tilde{\gamma_0}$ e $\tilde{\gamma_1}$.
+\end{proof}
 
 \begin{definition} [Rivestimento universale] \nl
     Un rivestimento $\pi: \tilde{X} \to X$ si dice \textbf{universale} se $\tilde{X}$ \`e semplicemente connesso.
@@ -1421,32 +1592,23 @@ Dunque per l'osservazione precedente le componenti connesse saranno sempre apert
 
 \begin{proposition} [Propriet\`a universale del rivestimento universale]
     Sia $\pi: \tilde{X} \to X$ un rivestimento universale, per ogni altro rivestimento $p: Y \to X$ esiste un morfismo
-    di rivestimenti $\varphi: \tilde{X} \to X$ e fissati $x_0 \in X$, $\bar{x_0}\in \pi^{-1}(x_0)$, $y_0 \in p^{-1}(x_0)$
+    di rivestimenti $\varphi: \tilde{X} \to X$ e fissati $x_0 \in X$, $\tilde{x_0}\in \pi^{-1}(x_0)$, $y_0 \in p^{-1}(x_0)$
     ne esiste uno solo tale che $\varphi(\bar{x_0}) = y_0$
 \end{proposition}
 
-\begin{theorem} [Sollevamento di cammini e omotopie] \nl
-    Sia $p: Y \to X$ un rivestimento, $x_0 \in X$ e $y \in p^{-1}(x)$. Vale \nl
-    \begin{enumerate}
-        \item Se $f: I \to X$ \`e un cammino tale che $f(0) = x_0$, allora
-            $\exists! \tilde{f}: I \to Y$ cammino tale che $p \circ \tilde{f} = f$ e $\tilde{f}(0) = y$
-            \[\begin{tikzcd}
-            I & Y \\
-            & X
-            \arrow["{\tilde{f}}", from=1-1, to=1-2]
-            \arrow["f"', from=1-1, to=2-2]
-            \arrow["p", from=1-2, to=2-2]
-        \end{tikzcd}\]
-        \item Se $f \sim g$ sono due cammini omotopi allora $\tilde{f}(1) = \tilde{g}(1)$ e $\tilde{f} \sim \tilde{g}$ 
-    \end{enumerate}
-\end{theorem}
-
-\begin{proof}
-    Vedere da Frigerio, troppo pi\`u chiara.
-\end{proof}
-
-\begin{proof} [della propriet\`a universale] \nl
-    
+\begin{proof} \nl
+    $\tilde{X}$ \`e connesso per archi, quindi $\forall \tilde{x} \in \tilde{X}$ esiste un cammino $g: I \to \tilde{X}$
+    tale che $g(0) = \tilde{x_0}$ e $g(1) = \tilde{x}$. \nl
+    Sia $f := \pi \circ g$ che \`e un cammino in $X$ tale che $f(0) = x_0$ e $f(1) = \pi(\tilde{x})$. \nl
+    E sia $\tilde{f} : I \to Y$ l'unico sollevamento di $f$ tale che $\tilde{f}(0) = y_0$. (che esiste per il teorema di sollevamento di cammini e omotopie).
+    Si definisce ora $\varphi: \tilde{X} \to Y$ come
+    \[
+        \varphi(\tilde{x}) = \tilde{f}(1).
+    \]
+    Tale mappa \`e ben definita e non dipende dalla scelta del cammino, perch\'e dato che $\tilde{X}$ \`e semplicemente connesso, ogni cammino $g'$ che collega $\tilde{x_0}$ a $\tilde{x}$ \`e omotopo a $g$,
+    di conseguenza il cammino $f$ \`e omotopo a $f' = \pi \circ \tilde{g'}$ e quindi per il sollevamento dell'omotopia si ha che $\tilde{f}(1) = \tilde{f'}(1)$ . \nl
+    L'unicit\`a di $\varphi$ fissati i punti segue dall'unicit\`a del sollevamnto di mappe qualunque. \nl
+    Resta da mostrare che $\varphi$ \`e una mappa continua. 
 \end{proof}
 
 \begin{corollary} \nl
@@ -1462,12 +1624,45 @@ Dunque per l'osservazione precedente le componenti connesse saranno sempre apert
 \end{corollary}
 
 \begin{corollary} [Unicit\`a del rivestimento universale] \nl
-    Il rivestimento universale di un qualunque spazio topologico $X$ \`e unico a meno di isomorfismo.
+    Un qualunque morfismo di rivestimenti universali $\varphi: \tilde{X_1} \to \tilde{X_2}$ \`e un isomorfismo. \nl
+    In particolare, grazie alla propriet\`a universale il rivestimento universale di un qualunque spazio topologico $X$ \`e unico a meno di isomorfismo. \nl
 \end{corollary}
+
+\begin{proof} \nl
+    Siano $x_0 \in X$, $\tilde{x} \in \pi_1^{-1}(x_0)$ e $\tilde{y} \in \varphi(\tilde{x}))$. \nl
+    Per la propriet\`a universale esiste un unico morfismo di rivestimenti $\psi: \tilde{X_2} \to \tilde{X_1}$ tale che
+    $\psi(\tilde{y}) = \tilde{x}$. \nl
+    Si ha quindi il diagramma:
+    % https://q.uiver.app/#q=WzAsMyxbMCwwLCJcXHRpbGRle1hfMX0iXSxbMiwwLCJcXHRpbGRle1hfMn0iXSxbMSwxLCJYIl0sWzAsMiwiXFxwaV8xIiwyXSxbMSwyLCJcXHBpXzIiXSxbMCwxLCJcXHZhcnBoaSIsMix7Im9mZnNldCI6MX1dLFsxLDAsIlxccHNpIiwyLHsib2Zmc2V0IjoxfV1d
+    \[\begin{tikzcd}
+	{\tilde{X_1}} && {\tilde{X_2}} \\
+	& X
+	\arrow["\varphi"', shift right, from=1-1, to=1-3]
+	\arrow["{\pi_1}"', from=1-1, to=2-2]
+	\arrow["\psi"', shift right, from=1-3, to=1-1]
+	\arrow["{\pi_2}", from=1-3, to=2-2]
+\end{tikzcd}\]
+    Cio\`e
+    % https://q.uiver.app/#q=WzAsMyxbMCwwLCJcXHRpbGRle1hfMX0iXSxbMiwwLCJcXHRpbGRle1hfMX0iXSxbMSwxLCJYIl0sWzAsMiwiXFxwaV8xIiwyXSxbMSwyLCJcXHBpXzEiXSxbMCwxLCJcXHBzaSBcXGNpcmMgXFx2YXJwaGkiLDIseyJvZmZzZXQiOjF9XSxbMCwxLCJcXGlkX3tcXHRpbGRle1hfMX19IiwwLHsib2Zmc2V0IjotMX1dXQ==
+    \[\begin{tikzcd}
+	{\tilde{X_1}} && {\tilde{X_1}} \\
+	& X
+	\arrow["{\psi \circ \varphi}"', shift right, from=1-1, to=1-3]
+	\arrow["{\id_{\tilde{X_1}}}", shift left, from=1-1, to=1-3]
+	\arrow["{\pi_1}"', from=1-1, to=2-2]
+	\arrow["{\pi_1}", from=1-3, to=2-2]
+    \end{tikzcd}\]
+    E quindi per dato che $(\psi \circ \varphi) (\tilde{x}) = \psi (\tilde{y}) = \tilde{x}$ vale che $\psi \circ \varphi = \id_{\tilde{X_1}}$\nl
+    Allo stesso modo $\varphi \circ \psi = \id_{\tilde{X_2}}$ e quindi $\varphi$ \`e un isomorfismo.
+\end{proof}
 
 \begin{corollary} \nl
     Ogni rivestimento di uno spazio $X$ semplicemente connesso \`e banale.
 \end{corollary}
+
+\begin{proof} \nl
+    Non l'ho ancora capita...
+\end{proof}
 
 \begin{theorem} [Gruppo di Galois e gruppo fondamentale] \nl
     Un rivestimento universale $\tilde{X} \to X$ \`e sempre di Galois e 
@@ -1476,7 +1671,7 @@ Dunque per l'osservazione precedente le componenti connesse saranno sempre apert
     \]
 \end{theorem}
 
-\begin{remark}
+\begin{remark} \nl
     Questo teorema permette di ricalcolare il gruppo fondamentale di alcuni spazi topologici precedenti:
     \begin{enumerate}
         \item $\R \to \Sph{1}$ \nl
@@ -1491,6 +1686,36 @@ Dunque per l'osservazione precedente le componenti connesse saranno sempre apert
         p \text{ \`e di Galois} \iff \exists x \in X \tc \Aut{Y/X} \text{ agisce transitivamente su } p^{-1}(x)
     \]
 \end{lemma}
+
+\begin{proof} [del lemma]\nl
+    $\Rightarrow$ Se $p$ \`e di Galois, allora $X \cong \frac{Y}{Aut{Y/X}}$ e quindi le fibre dei punti
+    sono esattamente le orbite dell'azione di $Aut{(Y/X)}$ su $Y$. Dunque \`e transitiva per definizione. \nl
+    $\Leftarrow$ p si fattorizza in
+    \[\begin{tikzcd}
+    Y & {Y/\Aut{Y/X}} & X
+    \arrow["", from=1-1, to=1-2]
+    \arrow["{\bar{p}}", from=1-2, to=1-3]
+    \end{tikzcd}\]
+    e $\bar{p}$ \`e sempre un rivestimento connesso, ma se l'azione \`e transitiva su $p^{-1}(x)$, allora
+    vale che $\abs{\bar{p}^{-1}(x)} = 1$ e dunque $\bar{p}$ \`e bigettiva, dato che \`e anche aperta(i rivestimenti sono aperti), \`e anche un omeomorfismo. \nl
+    Dunque $p$ \`e di Galois per definizione.
+\end{proof}
+
+\begin{proof} [del teorema] \nl
+    Si vuole definire una mappa:
+    \[
+        \Phi: pi_1(X, x_0) \to \Aut{\tilde{X}/X}
+    \]
+    come segue: fissato un $\tilde{x} \in \pi^{-1}(x_0)$, sia $g = [\gamma] \in \pi_1(X, x_0)$ e $\tilde{x_g} := \tilde{\gamma}(1) \in \pi^{-1}(x_0)$, dove
+    $\tilde{\gamma}$ \`e l'unico sollevamento di $\gamma$ tale che $\tilde{\gamma}(0) = \tilde{x}$. \nl
+    Per il sollevamento dell'omotopia si ha in effetti che $\tilde{x_g}$ dipende solo da $g$ e non da $\gamma$. \nl
+    Sia ora $\varphi_g: \tilde{X} \to \tilde{X}$ l'unico morfismo di rivestimenti tale che
+    \[
+        \varphi_g(\tilde{x}) = \tilde{x_g}.
+    \]
+    Si definisce ora $\Phi(g) := \varphi_g$ e si mostra che \`e un omomorfismo di gruppi, inietivvo e surgettivo. \nl
+
+\end{proof}
 
 \begin{definition} [Spazio localmente semplicemente connesso] \nl
     Uno spazio topologico $X$ si dice localmente semplicemente connesso se ogni ogni punto ammette un sistemfa fondamentale
@@ -1674,15 +1899,27 @@ Dunque per l'osservazione precedente le componenti connesse saranno sempre apert
     \begin{proof}
         Si ed inoltre metrizzabile implica I-numerabile.
     \end{proof}
+    \item Costruzione del cono toologico $\frac{X x [0,1]}{X x \set{0}}$. Calcolo del grupo fondamentale per
+    $X = S1$ e poi in generale. 
     \item Se $X,Y$ sono metrizzabili e compatti, dimostri che $X \times Y$ \`e compatto.
     \begin{proof}
-        Usando la caratterizzazione metrizzabili: compatto se e solo se completo e totalmente limitato
+        Usando la caratterizzazione metrizzabili: compatto se e solo se compatto per successioni.
+        (Oppure secondo TAMAS con il numero di Lebesgue)
+        \nl
     \end{proof}
     \item Cos'\`e il numero di Lebesgue?
 \end{enumerate}
 
 
 \subsection{Orale 8}
+\begin{enumerate}
+    \item Teorema di Van-Kampen con enunciato e dimostrazione.
+    \begin{answer}
+        Dimostrazione diversa da quella di Tamas, pi\`u generale e probabilmente presa dall'Hatcher.
+    \end{answer}
+    \item Dimostra che se $\alpha \sim \beta$ allora $\varphi(\alpha) \sim \varphi(\beta)$.
+    \item Se $\pi_1(X, x_0)$ \`e abeliano, allora $\forall \alpha, \beta \in \pi_1(X, x_0)$ si ha che $\alpha_{\sharp} = \beta_{\sharp}$
+\end{enumerate}
 
 \subsection{Orale 9}
 \begin{enumerate}
