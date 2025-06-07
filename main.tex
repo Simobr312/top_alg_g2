@@ -1986,14 +1986,16 @@ Si consdierino le seguenti due costruzinoi:
     \item Data una funzione $f: \C \to \C$ olomorfa tale che $\abs{f(z)} \leq c_1\abs{z} + c_2$ con $c_1,c_2 \in \R$ costanti.
         Cerchi una caratterizzazione di $f$.
         \begin{answer}
-            I polinomi di grafo minore o uguale a $d$. Dimostrazione molto simile al Teorema di Louville.
+            I polinomi di grado minore o uguale a $d$. Dimostrazione molto simile al Teorema di Louville.
         \end{answer}
     \item \`E vero che $f$ come sopra(quindi un polinomio) definisce un rivestimento $\C \to \C$? Per esempio $z \mapsto z^n$ \`e un rivestimento da $\C \to \C$? (Tamas)
         \begin{answer}
-            Non pu\`o essere un rivestimento perch\'e $f^{-1}(0)$ per il toerema fondamentale di gruppo. \nl
+            La mappa $\varrho: \C \to \C: z \mapsto z^n$ non può dare un rivestimento perch\'e per esempio, $\varrho^{-1}(0) = \set{0}$, mentre
+            $\varrho^{-1}(1) = \set{\zeta_n^i \mid i = 0, \dots ,n-1}$ e quindi non sarebbe ben definito il suo grado. (In generale tale osservazione si pu\`o fare per un poliniomio
+            generico al posto di $z^n$ ed usando il teorema fondamentale dell'algebra) \nl
             Tuttavia la mappa $\varrho: \C \setminus \set{0} \to \C \setminus \set{0}: z \mapsto z^n$ da un rivestimento
-            indotto dall'azione propriamente discontinua di $\Z / n\Z$ su $\C^*$ data da $[m].(\rho e^{\theta i}) := \rho e^{\left(\theta+ m\frac{2 \pi}{n}\right)i}$. nl
-            Oppure come ha risposto lui: $[m].z \to z \zeta_n^m$ dove $\zeta_n \in \C$ \`e una radice $n$ primitiva dell'unit\`a.
+            indotto dall'azione propriamente discontinua di $\Z / n\Z$ su $\C^*$ data da $[m].z \to (z) \zeta_n^m$, infatti in tal caso le orbite
+            dell'azione sono proprio le radici $n$-esime di $z^n$ e quindi le fibre del rivestimento $\varrho: \C \setminus \set{0} \to \C \setminus \set{0}$. \nl
         \end{answer}
 \end{enumerate}
 
@@ -2053,7 +2055,7 @@ Si consdierino le seguenti due costruzinoi:
     \begin{proof}
         Si ed inoltre metrizzabile implica I-numerabile.
     \end{proof}
-    \item Costruzione del cono toologico $\frac{X x [0,1]}{X x \set{0}}$. Calcolo del grupo fondamentale per
+    \item Costruzione del cono toologico $\frac{X \times [0,1]}{X \times \set{0}}$. Calcolo del grupo fondamentale per
     $X = S1$ e poi in generale. 
     \item Se $X,Y$ sono metrizzabili e compatti, dimostri che $X \times Y$ \`e compatto.
     \begin{proof}
